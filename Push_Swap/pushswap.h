@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:54:30 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/09 18:54:54 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/10 13:53:11 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 typedef struct swap
 {
 	int		index;
+	int		res ;
 	int		increment;
 	char	*allocation;
 	int		counter;
@@ -33,6 +34,16 @@ typedef struct forparcing
 	int		increment;
 	char	*allocation;
 } t_parc;
+
+typedef struct Node
+{
+	char *string;
+	struct	Node *next;
+} Node ;
+
 void putstr(char *string);
+int  check_validity(char *string);
+int count_total(char **array);
+void free_all(char **string);
 
 #endif 

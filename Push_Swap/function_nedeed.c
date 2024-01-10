@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:58:44 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/09 19:13:38 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/10 13:55:38 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,9 @@ char *merge_in_one(char **string)
     {
         while (string[all.index][all.increment])
         {
+            all.res = check_validity(string[all.index]);
+            if (all.res == -1)
+                return (free(all.allocation), NULL);
             all.allocation[all.counter] = string[all.index][all.increment];
             all.increment++;
             all.counter++;
@@ -84,6 +87,6 @@ int main(int argc, char **argv)
         putstr("Not Enough Argument");
         exit(1);
     }
-    char *res = merge_in_one(argv);   
-    printf("%s" , res);
+    char *res = merge_in_one(argv);
+    printf("%s" ,  res);
 }
