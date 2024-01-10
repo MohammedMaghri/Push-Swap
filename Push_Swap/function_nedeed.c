@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:58:44 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/10 17:30:59 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/10 19:12:25 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ char *merge_in_one(char **string)
             all.increment++;
             all.counter++;
         }
-        all.allocation[all.counter] = '-' ;
+        all.allocation[all.counter] = ' ' ;
         all.counter++ ;
         all.increment = 0;
         all.index++ ;
@@ -86,9 +86,10 @@ int main(int argc, char **argv)
         exit(1);
     }
     char *res = merge_in_one(argv);
+    printf("%s", res);
     char **test = read_to_list(res);
     int i = 0;
-    while (i < 5)
+    while (i < argc + 1)
     {
         printf("[%s]\n", test[i]);
         i++;

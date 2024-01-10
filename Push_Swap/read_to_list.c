@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 14:38:12 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/10 17:27:03 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/10 19:10:40 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ int count_how_much(char *string)
 
     while (string[index])
     {
-        if (string[index] == '-')
+        if (string[index] == ' ')
             index++ ;
         else
         {
             flag++ ;
-            while (string[index] != '-')
+            while (string[index] != ' ')
             {
                 index++ ;
             }
@@ -80,7 +80,7 @@ char **read_to_list(char *string)
     alocation = malloc(sizeof(char *) * count_how_much(string) + 1);
     while (string[list.index] && lecount(string) != 0)
     {
-        if (string[list.index] == '-')
+        if (string[list.index] == ' ')
         {
             checkpoint = list.index;
             list.index++ ;
