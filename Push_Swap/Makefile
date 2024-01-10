@@ -1,5 +1,5 @@
 var= pushswap
-SRC= function_nedeed.c parcing.c
+SRC= function_nedeed.c parcing.c read_to_list.c
 OBJS= $(SRC:.c=.o)
 CFLAGS= -Wall -Wextra -Werror
 CC= cc

@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:58:44 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/10 13:55:38 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/10 17:30:59 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void putstr(char *string)
 {
     while (*string)
-        write(1, string++, 1);
+        write(2, string++, 1);
 }
 
 int lecount(char *string)
@@ -65,9 +65,7 @@ char *merge_in_one(char **string)
     {
         while (string[all.index][all.increment])
         {
-            all.res = check_validity(string[all.index]);
-            if (all.res == -1)
-                return (free(all.allocation), NULL);
+            check_validity(string[all.index]);
             all.allocation[all.counter] = string[all.index][all.increment];
             all.increment++;
             all.counter++;
@@ -88,5 +86,11 @@ int main(int argc, char **argv)
         exit(1);
     }
     char *res = merge_in_one(argv);
-    printf("%s" ,  res);
+    char **test = read_to_list(res);
+    int i = 0;
+    while (i < 5)
+    {
+        printf("[%s]\n", test[i]);
+        i++;
+    }
 }

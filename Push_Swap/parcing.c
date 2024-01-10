@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:53:52 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/10 13:55:55 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/10 14:54:22 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void free_all(char **string)
 }
 int check_number(char string)
 {
-    if (string >= '0' && string <= '9')
+    if ((string >= '0' && string <= '9') || string == ' ')
         return (0);
     return (-1);
 }
@@ -36,8 +36,8 @@ int  check_validity(char *string)
     {
         if (check_number(string[index]) != 0)
         {
-            putstr("Wired Ithem In the arguments\n");
-            return (-1);       
+            putstr("Error\n");
+            exit(1);      
         }
         index++ ;
     }
