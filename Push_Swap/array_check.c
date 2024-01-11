@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 17:34:38 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/11 12:16:13 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/11 16:14:56 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,11 +71,10 @@ int number_converter(char *string)
     return (conv.total * conv.flag); 
 }
 
-int *convert_to_number(char **string)
+int *convert_to_number(char **string, t_addr *add)
 {
     t_parc  convert;
     int     *number ;
-
 
     convert.index = 0;
     convert.increment = 0;
@@ -83,10 +82,13 @@ int *convert_to_number(char **string)
     number = malloc(sizeof(int) * convert.total);
     while (convert.index < convert.total)
     {
+        if ((lecount(string[convert.index]) == 1) && (string[convert.index][0] == ' '))
+            putstr("c");
         number[convert.index] = number_converter(string[convert.index]);
         convert.index++ ;
     }
-    return number;
+    add->address = convert.index;
+    return (number);
 }
 
 int count_twode_arr(int *arr)
@@ -97,34 +99,37 @@ int count_twode_arr(int *arr)
     {
         i++ ;
     }
-    return i;
+    return (i);
 }
 
-void function_compare(int *arr)
-{
-    t_parc  compare;
+// void function_compare(int *arr)
+// {
+//     t_parc  compare;
 
-    compare.index = 0;
-    compare.flag = 0;
+//     compare.index = 0;
+//     compare.flag = 0;
+//     int increment ;
+//     int total; 
 
-    printf("%d", count_twode_arr(arr));
-    while (compare.index < count_twode_arr(arr))
-    {
-        compare.flag = arr[compare.index];
-        compare.index++ ;
-        while (compare.index < count_twode_arr(arr))
-        {
-            if (compare.flag == arr[compare.index])
-            {
-                putstr("Doubled");
-                exit(1);
-            }
-            compare.index++ ;
-        }
-        compare.index--;
-        compare.index++ ;
-    }
-}
+//     total = ;
+//     increment = 0;
+//     while (compare.index < count_twode_arr(&arr))
+//     {
+//         compare.flag = arr[compare.index];
+//         compare.index++ ;
+//         printf("----%d---" ,total);
+//         compare.increment = compare.index ;
+//         while (compare.increment < count_twode_arr(arr))
+//         {
+//             // if (compare.flag == arr[compare.increment])
+//             // {
+//             //     putstr("Error >>");
+//             //     exit(1);
+//             // }
+//             compare.increment++ ;
+//         }
+//     }
+// }
 // char **check_each_array(char **string)
 // {
 //     t_fac   check;
