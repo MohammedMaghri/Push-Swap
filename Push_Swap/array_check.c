@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 17:34:38 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/11 16:14:56 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/11 21:07:18 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,14 +80,18 @@ int *convert_to_number(char **string, t_addr *add)
     convert.increment = 0;
     convert.total = count_total(string);
     number = malloc(sizeof(int) * convert.total);
+    if (!number)
+    {
+        free_all(string);
+        exit(1);
+    }
     while (convert.index < convert.total)
     {
-        if ((lecount(string[convert.index]) == 1) && (string[convert.index][0] == ' '))
-            putstr("c");
         number[convert.index] = number_converter(string[convert.index]);
         convert.index++ ;
     }
     add->address = convert.index;
+    free_all(string);
     return (number);
 }
 
@@ -102,6 +106,33 @@ int count_twode_arr(int *arr)
     return (i);
 }
 
+char *keep_one(char *string)
+{
+    int     index ;
+    char    *allocation;
+    int     incremnt;
+
+    index = 0;
+    incremnt = 0;
+    allocation = malloc(sizeof(char) * lecount(string) + 1);
+    while (string[index])
+    {
+        if (string[index] == ' ' && string[index + 1] != ' ')
+        {
+             allocation[incremnt] = ' ';
+            incremnt++ ;
+        }
+        if (string[index] != ' ')
+        {
+            allocation[incremnt] = string[index];
+            incremnt++ ;
+        }
+        index++ ;
+    }
+    allocation[incremnt] = '\0';
+    free(string);
+    return (allocation);
+}
 // void function_compare(int *arr)
 // {
 //     t_parc  compare;

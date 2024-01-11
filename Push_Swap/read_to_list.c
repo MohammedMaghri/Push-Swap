@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 14:38:12 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/10 19:10:40 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/11 20:47:25 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ char *make_new(char *string, int checkpoint)
     int index = 0;
     char *allocation;
     allocation = malloc(sizeof(char) *  (checkpoint + 1));
+    if (!allocation)
+        exit(1);
     while (index < checkpoint)
     {
         allocation[index] = string[index];
@@ -58,7 +60,7 @@ char *string_maker(char *string)
     char    *allocation;
     allocation = malloc(sizeof(char) * (lecount(string) + 1));
     if (!allocation)
-        return (NULL);
+        exit(1);
     while (string[index])
     {
         allocation[index] = string[index];
@@ -77,7 +79,9 @@ char **read_to_list(char *string)
     list.index = 0;
     list.increment = 0;
     list.total = 0;
-    alocation = malloc(sizeof(char *) * count_how_much(string) + 1);
+    alocation = malloc(sizeof(char **) * 1000);
+    if (!alocation)
+        exit(1);
     while (string[list.index] && lecount(string) != 0)
     {
         if (string[list.index] == ' ')
@@ -88,6 +92,7 @@ char **read_to_list(char *string)
             temp = string_maker(&string[list.index]);
             free(string);
             string = string_maker(temp);
+            free(temp);
             list.index = 0;
             list.increment++ ;
         }

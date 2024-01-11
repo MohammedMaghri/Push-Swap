@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:58:44 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/11 16:18:50 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/11 21:13:29 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,19 @@ char *merge_in_one(char **string)
     all.increment = 0;
     all.counter = 0;
     all.total = count_total(string);
-    all.allocation = malloc(sizeof(char *) * (all.total + 1));
+    all.allocation = malloc(sizeof(char **) * 1000);
+    if (!all.allocation)
+        return NULL;
     while (all.index < all.total)
     {
         while (string[all.index][all.increment])
         {
+            if (string[all.index][0] == '\0')
+            {
+                putstr("Error\n");
+                free(string);
+                exit(1); 
+            }
             check_validity(string[all.index]);
             all.allocation[all.counter] = string[all.index][all.increment];
             all.increment++;
@@ -78,22 +86,34 @@ char *merge_in_one(char **string)
     all.allocation[all.counter] = '\0';
     return (all.allocation);
 }
+void ll(void)
+{
+    system("leaks pushswap");
+    exit(1);
+}
 int main(int argc, char **argv)
 {
 
     char    *res;
+    char *ondstring;
     char    **test;
     int     *num;
     t_addr  add ;
-    // int     this;
+    int index = 0;
     if (argc <= 1)
     {
         putstr("Not Enough Argument");
         exit(1);
     }
     res = merge_in_one(argv);
-    printf("| %s |\n", res);
-    test = read_to_list(res);
+    ondstring = keep_one(res);
+    test = read_to_list(ondstring);
     num = convert_to_number(test, &add);
-    printf("%s", test[0]);
+    while (index < add.address)
+    {
+        printf("[%d]\n", num[index]);
+        index++ ;
+    }
+    // atexit(ll);
+    // while (1);
 }

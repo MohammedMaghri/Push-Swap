@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:53:52 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/10 19:11:39 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/11 21:12:50 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int  check_validity(char *string)
         if (check_number(string[index]) != 0)
         {
             putstr("Error\n");
+            free(string);
             exit(1);      
         }
         index++ ;
