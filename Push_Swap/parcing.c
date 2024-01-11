@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:53:52 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/11 21:12:50 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/11 22:05:34 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void free_all(char **string)
 }
 int check_number(char string)
 {
-    if ((string >= '0' && string <= '9') || string == ' ')
+    if ((string >= '0' && string <= '9') || string == ' ' || string == '-')
         return (0);
     return (-1);
 }

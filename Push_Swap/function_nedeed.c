@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:58:44 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/11 21:17:56 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/11 21:58:57 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,36 @@ void ll(void)
     system("leaks pushswap");
     exit(1);
 }
+
+void check_double(int *num, t_addr *ind)
+{
+    t_parc  doble;
+
+    doble.index = 0;
+    doble.increment = 0;
+    doble.flag = 0;
+    doble.total = 0;
+    while (doble.index < ind->address)
+    {
+        doble.flag = num[doble.index];
+        printf("flag = %d\n", doble.flag);
+        doble.total++ ;
+        doble.increment = doble.total;
+        while (doble.increment < ind->address)
+        {
+            if (doble.flag == num[doble.total])
+            {
+                putstr("Double");
+                exit(1);
+            }
+            printf("%d/*\n" ,doble.increment);
+            doble.total++ ;
+            doble.increment++ ;
+        }
+        doble.increment = 0;
+        doble.index++ ;
+    }
+}
 int main(int argc, char **argv)
 {
 
@@ -112,11 +142,12 @@ int main(int argc, char **argv)
     ondstring = keep_one(res);
     test = read_to_list(ondstring);
     num = convert_to_number(test, &add);
+    // check_double(num, &add);
+    index  = 0;
     while (index < add.address)
     {
         printf("[%d]\n", num[index]);
         index++ ;
     }
-    // atexit(ll);
-    // while (1);
+    
 }

@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:54:30 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/11 19:25:52 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/11 21:37:45 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ typedef struct Node
 	struct	Node *next;
 } Node ;
 
+void check_double(int *num, t_addr *ind);
 char *keep_one(char *string);
 int *convert_to_number(char **string, t_addr *add);
 int count_twode_arr(int *arr);
