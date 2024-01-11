@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:58:44 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/10 19:12:25 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/11 12:13:38 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,18 +80,18 @@ char *merge_in_one(char **string)
 }
 int main(int argc, char **argv)
 {
+    int *num;
+    char *res;
+    char **test;
+
     if (argc <= 1)
     {
         putstr("Not Enough Argument");
         exit(1);
     }
-    char *res = merge_in_one(argv);
-    printf("%s", res);
-    char **test = read_to_list(res);
-    int i = 0;
-    while (i < argc + 1)
-    {
-        printf("[%s]\n", test[i]);
-        i++;
-    }
+    res = merge_in_one(argv);
+    test = read_to_list(res);
+    num = convert_to_number(test);
+    function_compare(num);
+
 }

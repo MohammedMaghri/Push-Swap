@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:54:30 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/10 18:25:21 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/11 12:13:24 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct forparcing
 {
 	int		total;
 	int		index;
+	int		flag;
 	int		increment;
 	char	*allocation;
 } t_parc;
@@ -45,6 +46,8 @@ typedef struct Node
 	struct	Node *next;
 } Node ;
 
+void function_compare(int *arr);
+int *convert_to_number(char **string);
 int count_twode(char **string);
 int check_to_add(char **string);
 int lecount(char *string);
