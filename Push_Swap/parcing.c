@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:53:52 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/12 13:17:04 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/12 21:30:44 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,14 @@ int  check_validity(char *string)
 
     while (string[index])
     {
+        if (string[index] == '-')
+        {
+            if (string[index + 1] == '-')
+            {
+                putstr("Error");
+                exit(1);
+            }
+        }
         if (check_number(string[index]) != 0)
         {
             putstr("Error\n");
