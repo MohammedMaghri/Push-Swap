@@ -6,11 +6,12 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 11:56:49 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/10 12:33:06 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/12 11:21:24 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
+#include <stddef.h>
 
 int lencount(char *string)
 {
@@ -39,8 +40,10 @@ void linked_tes(Node *me, char *string)
 {
     char *testing = "Pointer Two";
     char *argtr = "Pointer to the Third Argument";
+
     me->string = make_string(string);
     me->next = NULL;
+    
     Node *test = malloc(sizeof(struct Node));
     test->string = make_string(testing);
     me->next = test;
