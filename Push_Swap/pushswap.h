@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:54:30 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/11 21:37:45 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/12 18:37:51 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ typedef struct foradress
 
 typedef struct Node
 {
-	char *string;
+	int	array;
 	struct	Node *next;
 } Node ;
 

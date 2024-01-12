@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 11:56:49 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/12 11:21:24 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/12 19:53:30 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ void linked_tes(Node *me, char *string)
     test->next = tree;
     tree->next = NULL;
 }
+
 int main()
 {
     char    *array;

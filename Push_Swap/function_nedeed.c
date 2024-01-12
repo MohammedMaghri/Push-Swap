@@ -6,39 +6,12 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:58:44 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/12 13:12:04 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/12 20:19:40 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-void putstr(char *string)
-{
-    while (*string)
-        write(2, string++, 1);
-}
-
-int lecount(char *string)
-{
-    int index = 0;
-
-    while (string[index])
-    {
-        index++ ;
-    }
-    return (index);
-}
-int count_total(char **array)
-{
-    t_fac   all;
-
-    all.index = 0;
-    while (array[all.index])
-    {
-        all.index++ ;
-    }
-    return (all.index);
-}
 
 char *move_string(char *string)
 {
@@ -80,11 +53,6 @@ char *merge_in_one(char **string)
     all.allocation[all.counter] = '\0';
     return (all.allocation);
 }
-void ll(void)
-{
-    system("leaks pushswap");
-    exit(1);
-}
 
 void check_double(int *num, t_addr *ind)
 {
@@ -103,7 +71,7 @@ void check_double(int *num, t_addr *ind)
         {
             if (doble.flag == num[doble.increment])
             {
-                putstr("Double");
+                putstr("error");
                 exit(1);
             }
             doble.increment++ ;
@@ -113,6 +81,33 @@ void check_double(int *num, t_addr *ind)
     }
 }
 
+void sadd_list(Node *add, int num)
+{
+    Node    *str;
+
+    str = malloc(sizeof(struct Node));
+
+    while (add->next != NULL)
+        add = add->next;
+    add->next = str;
+    str->array = num;
+    str->next = NULL;
+}
+
+void function_made(int *num, Node *list, t_addr *add)
+{
+    t_parc  made;
+
+    made.index = 0;
+    list->array = num[made.index];
+    list->next = NULL;
+    made.index++ ;
+    while (made.index < add->address)
+    {
+        sadd_list(list, num[made.index]);
+        made.index++;
+    }
+}
 int main(int argc, char **argv)
 {
 
@@ -121,6 +116,8 @@ int main(int argc, char **argv)
     char    **test;
     int     *num;
     t_addr  add ;
+    Node    *list;
+    list = malloc(sizeof(struct Node));
     int index = 0;
     if (argc <= 1)
     {
@@ -146,11 +143,10 @@ int main(int argc, char **argv)
     test = read_to_list(ondstring);
     num = convert_to_number(test, &add);
     check_double(num, &add);
-    index  = 0;
-    while (index < add.address)
+    function_made(num , list, &add);
+    while (list != NULL)
     {
-        printf("[%d]\n", num[index]);
-        index++ ;
+        printf("[%d]\n",list->array);
+        list = list->next;
     }
-    
 }
