@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 11:19:23 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/13 12:17:47 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/13 12:56:15 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,14 +93,14 @@ void ss_swap(Node *list_a, Node *list_b)
     putstr("ss\n");
 }
 
-void pb_push(Node *list_a, Node *list_b)
+void pb_push(Node **list_a, Node **list_b)
 {
-    if (count_list(list_a) < 1)
+    if (count_list(*list_a) < 1)
         return ;
-    struct Node *new;
-    new = malloc(sizeof(struct Node));
-    new->array = list_a->array;
-    new->next = list_b;
+    Node *point= (*list_a)->next;
+    (*list_b) = (*list_a);
+    (*list_a) = point;
+    (*list_b)->next = NULL;;
     putstr("pb\n");
 }
 

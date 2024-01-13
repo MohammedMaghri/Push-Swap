@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:54:30 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/13 12:12:41 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/13 12:51:15 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ typedef struct Node
 	struct	Node *next;
 } Node ;
 
-void pb_push(Node *list_a, Node *list_b);
+void pb_push(Node **list_a, Node **list_b);
 void function_made(int *num, Node *list, t_addr *add);
 void sadd_list(Node *add, int num);
 void sa_swap(Node *list);
