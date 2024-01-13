@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:58:44 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/13 19:13:39 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/13 19:23:14 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,10 +125,11 @@ int main(int argc, char **argv)
     num = convert_to_number(test, &add);
     check_double(num, &add);
     function_made(num , list, &add);
-    rr_rotate(&list, &list_b);
+    // rr_rotate(&list, &list_b);
     // pb_push(&list, &list_b);
     // pa_push(&list, &list_b);
     // pa_push(&list, &list_b);
+    rra_rotate(&list);
     while (list_b != NULL)
     {
         printf("List_B ==>>>>>%d\n", list_b->array);

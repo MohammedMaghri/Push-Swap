@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:54:30 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/13 19:10:04 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/13 19:22:53 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ typedef struct Node
 	struct	Node *next;
 } Node ;
 
+void rra_rotate(Node **list_a);
 void rr_rotate(Node **list_a, Node **list_b);
 void rb_rotate(Node **list_b);
 void ra_rotate(Node **list);
