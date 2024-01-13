@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:58:44 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/13 15:31:58 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/13 19:13:39 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,13 @@ int main(int argc, char **argv)
     Node    *list;
     Node    *list_b;
     list = malloc(sizeof(struct Node));
-    list_b = NULL;
+    list_b = malloc(sizeof(struct Node));
+    Node *other ;
+    other = malloc(sizeof(struct Node));
+    other->array = 8;
+    other->next = NULL;
+    list_b->array = 10;
+    list_b->next = other;
     int index = 0;
     if (argc <= 1)
     {
@@ -119,18 +125,19 @@ int main(int argc, char **argv)
     num = convert_to_number(test, &add);
     check_double(num, &add);
     function_made(num , list, &add);
-    // sa_swap(list);
-    pb_push(&list, &list_b);
-    pb_push(&list, &list_b);
+    rr_rotate(&list, &list_b);
+    // pb_push(&list, &list_b);
+    // pa_push(&list, &list_b);
+    // pa_push(&list, &list_b);
     while (list_b != NULL)
     {
-        printf("%d \n", list_b->array);
+        printf("List_B ==>>>>>%d\n", list_b->array);
         list_b = list_b->next;
     }
     printf("---------\n\n");
     while (list != NULL)
     {
-        printf("%d \n", list->array);
+        printf("List_A==>>>>>[%d]\n", list->array);
         list = list->next;
     }
 }

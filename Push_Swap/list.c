@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 11:19:23 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/13 15:30:34 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/13 19:09:56 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,8 @@ void sb_swap(Node *list_b)
 }
 void ss_swap(Node *list_a, Node *list_b)
 {
+    if (count_list(list_a) <= 1 || count_list(list_b) <= 1)
+        return ;
     sa_swap(list_a);
     sb_swap(list_b);
     putstr("ss\n");
@@ -97,29 +99,59 @@ void pb_push(Node **list_a, Node **list_b)
 {
     if (*list_a == NULL)
         return ;
-    if (count_list(*list_a) < 1)
-    {
-        Node *point= (*list_a)->next;
-        (*list_b) = (*list_a);
-        (*list_a) = point;
-        (*list_b)->next = NULL;;
-    }
-    else
-    {
-        Node *other = (*list_b);
-        Node *point =(*list_a)->next;
-        (*list_b)  = (*list_a);
-        (*list_a) = point;
-        (*list_b)->next = other;
-    }
+    Node *other = (*list_b);
+    Node *point =(*list_a)->next;
+    (*list_b)  = (*list_a);
+    (*list_a) = point;
+    (*list_b)->next = other;
     putstr("pb\n");
 }
 
-// void pa_push(Node **list_a, Node **list_b)
-// {
-//     if (count_list(list_b) < 1)
-//         return ;
-//     if (count_list(list_b) < 1)
+void pa_push(Node **list_a, Node **list_b)
+{
+    if (*list_b == NULL)
+        return;
+    Node *keep = (*list_a);
+    Node *flag = (*list_b);
+    Node *move = (*list_b)->next;
+    (*list_b) = move;
+    (*list_a) = flag;
+    (*list_a)->next = keep; 
+    putstr("pa\n");
+}
 
-//     putstr("pb\n");
-// }
+void ra_rotate(Node **list)
+{
+    if (count_list(*list) < 2)
+        return ;
+    Node *flag = (*list);
+    Node *from = (*list)->next;
+    (*list) = from;
+    Node *hnaya = *list;
+    while (hnaya->next != NULL)
+        (hnaya) = (hnaya)->next;
+    hnaya->next = flag;
+    flag->next = NULL;
+    putstr("ra\n");
+}
+
+void rb_rotate(Node **list_b)
+{
+    if (count_list(*list_b) == 1)
+        return;
+    Node *flag = (*list_b);
+    Node *track = (*list_b)->next;
+    Node *follow = flag;
+    (*list_b) = track ;
+    while (follow->next != NULL)
+        follow = follow->next;
+    follow->next = flag;
+    flag->next = NULL;
+    putstr("rb\n");
+}
+void rr_rotate(Node **list_a, Node **list_b)
+{
+    ra_rotate((list_a));
+    rb_rotate((list_b));
+    putstr("rr\n");
+}
