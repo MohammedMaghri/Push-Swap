@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:58:44 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/12 20:19:40 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/13 12:13:14 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,33 +81,6 @@ void check_double(int *num, t_addr *ind)
     }
 }
 
-void sadd_list(Node *add, int num)
-{
-    Node    *str;
-
-    str = malloc(sizeof(struct Node));
-
-    while (add->next != NULL)
-        add = add->next;
-    add->next = str;
-    str->array = num;
-    str->next = NULL;
-}
-
-void function_made(int *num, Node *list, t_addr *add)
-{
-    t_parc  made;
-
-    made.index = 0;
-    list->array = num[made.index];
-    list->next = NULL;
-    made.index++ ;
-    while (made.index < add->address)
-    {
-        sadd_list(list, num[made.index]);
-        made.index++;
-    }
-}
 int main(int argc, char **argv)
 {
 
@@ -117,7 +90,9 @@ int main(int argc, char **argv)
     int     *num;
     t_addr  add ;
     Node    *list;
+    Node    *list_b;
     list = malloc(sizeof(struct Node));
+    list_b = malloc(sizeof(struct Node));
     int index = 0;
     if (argc <= 1)
     {
@@ -144,9 +119,11 @@ int main(int argc, char **argv)
     num = convert_to_number(test, &add);
     check_double(num, &add);
     function_made(num , list, &add);
-    while (list != NULL)
+    sa_swap(list);
+    pb_push(list, list_b);
+    while (list_b != NULL)
     {
-        printf("[%d]\n",list->array);
-        list = list->next;
+        printf("%d \n", list_b->array);
+        list_b = list_b->next;
     }
 }
