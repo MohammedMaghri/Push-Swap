@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 11:19:23 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/13 19:27:04 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/13 22:57:47 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,18 +155,29 @@ void rr_rotate(Node **list_a, Node **list_b)
     rb_rotate((list_b));
     putstr("rr\n");
 }
+
 void rra_rotate(Node **list_a)
 {
-    if (count_list(*list_a) == 1)
+    if (count_list(*list_a) < 2)
         return ;
-    // Node *flag = (*list_a);
-    // Node *tracker = (*list_a);
-    t_parc  move;
-    move.total = (count_list(*list_a) - 1);
-    move.index = 0;
-        printf("%d", (*list_a)->array);
-    while (move.index <= move.total )
+     if (count_list(*list_a) == 2)
+     {
+        sa_swap(*list_a);
+        return ;
+     }
+    Node *inc = (*list_a);
+    // Node *var = (*list_a);
+    while (inc->next->next != NULL)
     {
-        (*list_a) = (*list_a)->next;
+        inc = inc->next;
     }
+    Node *other = inc ;
+    inc->next = NULL;
+    other->next= (*list_a);
+
+//     while (var->next != NULL)
+//     {
+//         var = var->next;
+//     }
+//     var->next = other;
 }

@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:58:44 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/13 19:23:14 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/13 22:53:14 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,12 +130,6 @@ int main(int argc, char **argv)
     // pa_push(&list, &list_b);
     // pa_push(&list, &list_b);
     rra_rotate(&list);
-    while (list_b != NULL)
-    {
-        printf("List_B ==>>>>>%d\n", list_b->array);
-        list_b = list_b->next;
-    }
-    printf("---------\n\n");
     while (list != NULL)
     {
         printf("List_A==>>>>>[%d]\n", list->array);
