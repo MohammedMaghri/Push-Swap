@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:58:44 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/13 12:54:40 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/13 15:31:58 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,9 +121,16 @@ int main(int argc, char **argv)
     function_made(num , list, &add);
     // sa_swap(list);
     pb_push(&list, &list_b);
+    pb_push(&list, &list_b);
     while (list_b != NULL)
     {
         printf("%d \n", list_b->array);
         list_b = list_b->next;
+    }
+    printf("---------\n\n");
+    while (list != NULL)
+    {
+        printf("%d \n", list->array);
+        list = list->next;
     }
 }

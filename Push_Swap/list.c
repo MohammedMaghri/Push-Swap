@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 11:19:23 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/13 12:56:15 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/13 15:30:34 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,19 +95,31 @@ void ss_swap(Node *list_a, Node *list_b)
 
 void pb_push(Node **list_a, Node **list_b)
 {
-    if (count_list(*list_a) < 1)
+    if (*list_a == NULL)
         return ;
-    Node *point= (*list_a)->next;
-    (*list_b) = (*list_a);
-    (*list_a) = point;
-    (*list_b)->next = NULL;;
+    if (count_list(*list_a) < 1)
+    {
+        Node *point= (*list_a)->next;
+        (*list_b) = (*list_a);
+        (*list_a) = point;
+        (*list_b)->next = NULL;;
+    }
+    else
+    {
+        Node *other = (*list_b);
+        Node *point =(*list_a)->next;
+        (*list_b)  = (*list_a);
+        (*list_a) = point;
+        (*list_b)->next = other;
+    }
     putstr("pb\n");
 }
 
-void pa_push(Node *list_a, Node *list_b)
-{
-    if (count_list(list_b) < 1)
-        return ;
-    list_a->array = list_b->array;
-    putstr("pb\n");
-}
+// void pa_push(Node **list_a, Node **list_b)
+// {
+//     if (count_list(list_b) < 1)
+//         return ;
+//     if (count_list(list_b) < 1)
+
+//     putstr("pb\n");
+// }
