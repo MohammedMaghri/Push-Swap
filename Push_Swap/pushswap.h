@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:54:30 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/14 12:49:04 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/14 17:09:05 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef struct forparcing
 	int		flag;
 	int		increment;
 	char	*allocation;
+	char	**twode;
 } t_parc;
 
 typedef struct foradress
@@ -53,6 +54,8 @@ typedef struct Node
 	struct	Node *next;
 } Node ;
 
+void	check_greater(int *array, t_addr *add);
+void rrr_rotate(Node **list_a, Node **list_b);
 void rrb_rotate(Node **list_b);
 void rra_rotate(Node **list_a);
 void rr_rotate(Node **list_a, Node **list_b);

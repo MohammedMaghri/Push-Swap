@@ -6,132 +6,140 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 17:34:38 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/12 21:21:30 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/14 16:59:51 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-int count_twode(char **string)
+int	count_twode(char **string)
 {
-    int index = 0;
+	int	index ;
 
-    while (string[index])
-    {
-        index++ ;
-    }
-    return (index);
-}
-int check_to_add(char **string)
-{
-    int index = 0;
-    int flag = 0;
-    int incre = 0;
-    while (index < count_twode(string))
-    {
-        while (string[index])
-        {
-            if (string[index][incre] == ' ')
-                incre++ ;
-            else
-            {
-                flag++ ;
-                while (string[index][incre] != ' ')
-                    incre++ ;
-            }
-        }
-        incre = 0;
-        index++ ;
-    }
-    return (flag);
-}
-int number_converter(char *string)
-{
-    t_fac   conv;
-
-    conv.index = 0;
-    conv.total = 0;
-    conv.flag = 1;
-
-    while ((string[conv.index] >= 9 && string[conv.index] <= 13) || string[conv.index] == ' ')
-        conv.index++ ;
-    while (string[conv.index] == '-' || string[conv.index] == '+')
-    {
-        if (string[conv.index] == '-')
-        {
-            conv.flag *= -1;
-        }
-        conv.index++ ;
-    }
-    while (string[conv.index] >= '0' && string[conv.index] <= '9')
-    {
-        conv.total = (conv.total * 10) + (string[conv.index] - '0');
-        conv.index++ ;
-    }
-    return (conv.total * conv.flag); 
+	index = 0;
+	while (string[index])
+	{
+		index++ ;
+	}
+	return (index);
 }
 
-int *convert_to_number(char **string, t_addr *add)
+int	check_to_add(char **string)
 {
-    t_parc  convert;
-    int     *number ;
+	int	index ;
+	int	flag ;
+	int	incre ;
 
-    convert.index = 0;
-    convert.increment = 0;
-    convert.total = count_total(string);
-    number = malloc(sizeof(int) * convert.total);
-    if (!number)
-    {
-        free_all(string);
-        exit(1);
-    }
-    while (convert.index < convert.total)
-    {
-        number[convert.index] = number_converter(string[convert.index]);
-        convert.index++ ;
-    }
-    add->address = convert.index;
-    free_all(string);
-    return (number);
+	incre = 0;
+	flag = 0;
+	index = 0;
+	while (index < count_twode(string))
+	{
+		while (string[index])
+		{
+			if (string[index][incre] == ' ')
+				incre++ ;
+			else
+			{
+				flag++ ;
+				while (string[index][incre] != ' ')
+					incre++ ;
+			}
+		}
+		incre = 0;
+		index++ ;
+	}
+	return (flag);
 }
 
-int count_twode_arr(int *arr)
+int	number_converter(char *string)
 {
-    int i = 0;
+	t_fac	conv;
 
-    while (arr[i])
-    {
-        i++ ;
-    }
-    return (i);
+	conv.index = 0;
+	conv.total = 0;
+	conv.flag = 1;
+	while ((string[conv.index] >= 9 && string[conv.index] <= 13) || \
+	string[conv.index] == ' ')
+		conv.index++ ;
+	while (string[conv.index] == '-' || string[conv.index] == '+')
+	{
+		if (string[conv.index] == '-')
+		{
+			conv.flag *= -1;
+		}
+		conv.index++ ;
+	}
+	while (string[conv.index] >= '0' && string[conv.index] <= '9')
+	{
+		conv.total = (conv.total * 10) + (string[conv.index] - '0');
+		conv.index++ ;
+	}
+	return (conv.total * conv.flag);
 }
 
-char *keep_one(char *string)
+int	*convert_to_number(char **string, t_addr *add)
 {
-    int     index ;
-    char    *allocation;
-    int     incremnt;
+	t_parc	convert;
+	int		*number ;
 
-    index = 0;
-    incremnt = 0;
-    allocation = malloc(sizeof(char) * lecount(string) + 1);
-    while (string[index])
-    {
-        if (string[index] == ' ' && string[index + 1] != ' ')
-        {
-             allocation[incremnt] = ' ';
-            incremnt++ ;
-        }
-        if (string[index] != ' ')
-        {
-            allocation[incremnt] = string[index];
-            incremnt++ ;
-        }
-        index++ ;
-    }
-    allocation[incremnt] = '\0';
-    free(string);
-    return (allocation);
+	convert.index = 0;
+	convert.increment = 0;
+	convert.total = count_total(string);
+	number = malloc(sizeof(int) * convert.total);
+	if (!number)
+	{
+		free_all(string);
+		exit(1);
+	}
+	while (convert.index < convert.total)
+	{
+		number[convert.index] = number_converter(string[convert.index]);
+		convert.index++ ;
+	}
+	add->address = convert.index;
+	free_all(string);
+	return (number);
+}
+
+int	count_twode_arr(int *arr)
+{
+	int	i ;
+
+	i = 0;
+	while (arr[i])
+	{
+		i++ ;
+	}
+	return (i);
+}
+
+char	*keep_one(char *string)
+{
+	int		index ;
+	char	*allocation;
+	int		incremnt;
+
+	index = 0;
+	incremnt = 0;
+	allocation = malloc(sizeof(char) * lecount(string) + 1);
+	while (string[index])
+	{
+		if (string[index] == ' ' && string[index + 1] != ' ')
+		{
+			allocation[incremnt] = ' ';
+			incremnt++ ;
+		}
+		if (string[index] != ' ')
+		{
+			allocation[incremnt] = string[index];
+			incremnt++ ;
+		}
+		index++ ;
+	}
+	allocation[incremnt] = '\0';
+	free(string);
+	return (allocation);
 }
 // void function_compare(int *arr)
 // {
