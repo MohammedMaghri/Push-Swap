@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 11:19:23 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/13 22:57:47 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/14 12:53:55 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,24 +160,35 @@ void rra_rotate(Node **list_a)
 {
     if (count_list(*list_a) < 2)
         return ;
-     if (count_list(*list_a) == 2)
-     {
+    if (count_list(*list_a) == 2)
+    {
         sa_swap(*list_a);
         return ;
-     }
+    }
     Node *inc = (*list_a);
-    // Node *var = (*list_a);
-    while (inc->next->next != NULL)
+    Node *var = NULL;
+    while (inc->next != NULL)
     {
+        var = inc ;
         inc = inc->next;
     }
-    Node *other = inc ;
-    inc->next = NULL;
-    other->next= (*list_a);
+    var->next = NULL;
+    inc->next = (*list_a);
+    (*list_a) = inc;
+}
 
-//     while (var->next != NULL)
-//     {
-//         var = var->next;
-//     }
-//     var->next = other;
+void rrb_rotate(Node **list_b)
+{
+    Node *head;
+    Node *position;
+    head = (*list_b);
+    position = NULL;
+    while (head->next != NULL)
+    {
+        position = head ;
+        head = head->next ;
+    }
+    position->next = NULL;
+    head->next = (*list_b);
+    (*list_b) = head;
 }
