@@ -6,28 +6,27 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 14:39:45 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/14 14:55:40 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/15 18:43:47 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-void	ra_rotate(Node **list)
+void	ra_rotate(Node **list_a)
 {
-	Node	*from;
-	Node	*hnaya;
-	Node	*flag;
+	Node	*flag ;
+	Node	*track ;
+	Node	*follow;
 
-	from = NULL;
-	if (count_list(*list) < 2)
+	if (count_list(*list_a) == 1)
 		return ;
-	(*list) = from;
-	from = (*list)->next;
-	flag = (*list);
-	hnaya = *list;
-	while (hnaya->next != NULL)
-		(hnaya) = (hnaya)->next;
-	hnaya->next = flag;
+	flag = (*list_a);
+	track = (*list_a)->next;
+	follow = flag;
+	(*list_a) = track ;
+	while (follow->next != NULL)
+		follow = follow->next;
+	follow->next = flag;
 	flag->next = NULL;
 	putstr("ra\n");
 }

@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 14:42:06 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/14 22:25:07 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/15 20:51:02 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void	rra_rotate(Node **list_a)
 	var->next = NULL;
 	inc->next = (*list_a);
 	(*list_a) = inc;
+	putstr("rra\n");
 }
 
 void	rrb_rotate(Node **list_b)

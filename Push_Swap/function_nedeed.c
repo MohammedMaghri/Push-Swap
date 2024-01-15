@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:58:44 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/15 18:20:26 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/15 20:44:45 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,14 +134,8 @@ int main(int argc, char **argv)
     check_double(num, &add);
 	check_greater(num, &add);
     function_made(num, list, &add);
-	int rus ;
 	at_linked(&list);
-	rus = check_highest(&list);
-	int po = check_sort(&list);
-	printf(" %d ", po);
-	printf("----?%d\n", rus);
-	// if (rus == 1)
-	// 	ra_rotate(&list);
+	check_tree(&list);
     while (list != NULL)
     {
         printf("List_A==>>>>> [%d]\n", list->array);

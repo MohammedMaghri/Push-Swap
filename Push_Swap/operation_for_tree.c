@@ -6,53 +6,30 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 21:13:51 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/15 13:58:56 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/15 20:51:41 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-void	check_biggest(Node **list, int num, int index)
+void check_tree(Node **list)
 {
-	t_parc	elem;
-	Node	*new ;
-
-	new = (*list);
-	elem.index = 0;
-	(void)num;
-	while (new->next != NULL)
+	if (check_highest(list) == 1)
 	{
-		new = new->next ;
-		elem.index++;
-		if (elem.index == index)
-			break ;
+		ra_rotate(list);
+		if (check_sort(list) == -1)
+			sa_swap(*list);
 	}
-		printf("%d--\n", new->array);
-		printf("%d--\n", new->next->array);
-}
-
-void	check_if_only_tree(Node **list)
-{
-	int		first ;
-	int		second;
-	// int		third;
-	Node	*copy ;
-	Node	*reset ;
-	// Node	*position ;
-	Node	*other ;
-
-	printf("yoooo");
-	reset = (*list);
-	copy = (*list);
-	other = (*list);
-	if (count_list(*list) != 3)
-		return ;
-	while ((*list)->next != NULL)
+	else if (check_highest(list) == 2)
 	{
-		printf("[%d]|\n", first);
-		printf("[%d]|\n", second);
-		first = (*list)->array;
-		second = (*list)->next->array;
-		(*list) = (*list)->next ;
+		rra_rotate(list);
+		if (check_sort(list) == -1)
+			sa_swap(*list);
 	}
+	else if (check_highest(list) == 3)
+	{
+		if (check_sort(list) == -1)
+			sa_swap(*list);
+	}
+
 }
