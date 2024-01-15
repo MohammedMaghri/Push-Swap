@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 14:42:06 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/14 17:18:43 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/14 22:25:07 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,11 @@ void	check_greater(int *array, t_addr *add)
 	int	index ;
 	int	flag;
 	int	incre;
-
 	index = 0;
 	flag = array[index];
-	index++ ;
-	while (index < add->address)
+	while (index <= add->address)
 	{
+		index++ ;
 		incre = index;
 		while (incre < add->address)
 		{
@@ -31,11 +30,9 @@ void	check_greater(int *array, t_addr *add)
 			incre++ ;
 		}
 		incre = 0;
-		index++ ;
 		flag = array[index];
 	}
-	putstr("It's Alerady Sorted ...");
-	exit(1);
+	exit(0);
 }
 
 void	rra_rotate(Node **list_a)

@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 17:34:38 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/14 16:59:51 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/15 12:15:14 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,10 +92,13 @@ int	*convert_to_number(char **string, t_addr *add)
 		free_all(string);
 		exit(1);
 	}
-	while (convert.index < convert.total)
+	while (convert.index < convert.total && convert.increment < convert.total)
 	{
-		number[convert.index] = number_converter(string[convert.index]);
+		if (string[convert.increment][0] == '\0')
+			convert.increment++ ;
+		number[convert.index] = number_converter(string[convert.increment]);
 		convert.index++ ;
+		convert.increment++;
 	}
 	add->address = convert.index;
 	free_all(string);

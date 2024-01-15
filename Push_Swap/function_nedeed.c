@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:58:44 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/14 17:27:32 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/15 12:15:29 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,16 +112,6 @@ void	check_args(int argc, char **array)
 		i = 0;
 		all.index++ ;
 	}
-	while (all.index < count_total(array))
-	{
-		if ((lecount(array[all.index]) == 1 && array[all.index][0] == '-') || \
-		(lecount(array[all.index]) == 1 && array[all.index][0] == ' '))
-		{
-			putstr("Error");
-			exit(1);
-		}
-		all.index++ ;
-	}
 }
 int main(int argc, char **argv)
 {
@@ -134,13 +124,7 @@ int main(int argc, char **argv)
     Node    *list;
     Node    *list_b;
     list = malloc(sizeof(struct Node));
-    list_b = malloc(sizeof(struct Node));
-    Node *other ;
-    other = malloc(sizeof(struct Node));
-    other->array = 8;
-    other->next = NULL;
-    list_b->array = 10;
-    list_b->next = other;
+	list_b = NULL ;
 	check_args(argc, argv);
     res = merge_in_one(argv);
     ondstring = keep_one(res);
@@ -152,16 +136,12 @@ int main(int argc, char **argv)
     // rr_rotate(&list, &list_b);
     // pb_push(&list, &list_b);
     // pa_push(&list, &list_b);
-    // pa_push(&list, &list_b);
-    rrr_rotate(&list, &list_b);
-    while (list_b != NULL)
+	// check_if_only_tree(&list);
+	int i = 0;
+    while (list != NULL && i <= add.address)
     {
-        printf("List_B==>>>>>[%d]\n", list_b->array);
-        list_b = list_b->next;
-    }
-    printf("\n");
-    while (list != NULL)
-    {
+		printf("%d --> \n",i);
+		i++;
         printf("List_A==>>>>>[%d]\n", list->array);
         list = list->next;
     }

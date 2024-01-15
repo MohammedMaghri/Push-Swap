@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:54:30 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/14 17:09:05 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/14 22:30:54 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,11 @@ typedef struct foradress
 typedef struct Node
 {
 	int	array;
+	int	index;
 	struct	Node *next;
 } Node ;
 
+void	check_if_only_tree(Node **list);
 void	check_greater(int *array, t_addr *add);
 void rrr_rotate(Node **list_a, Node **list_b);
 void rrb_rotate(Node **list_b);
