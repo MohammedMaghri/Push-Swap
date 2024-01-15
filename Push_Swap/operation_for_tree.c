@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 21:13:51 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/14 22:22:54 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/15 13:58:56 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,24 @@ void	check_if_only_tree(Node **list)
 {
 	int		first ;
 	int		second;
-	int		third;
+	// int		third;
 	Node	*copy ;
+	Node	*reset ;
+	// Node	*position ;
+	Node	*other ;
 
+	printf("yoooo");
+	reset = (*list);
 	copy = (*list);
+	other = (*list);
 	if (count_list(*list) != 3)
 		return ;
-	first = copy->array;
-	check_biggest(list, first, 1);
-	copy = copy->next;
-	second = copy->array;
-	copy = copy->next;
-	third = copy->array ;
+	while ((*list)->next != NULL)
+	{
+		printf("[%d]|\n", first);
+		printf("[%d]|\n", second);
+		first = (*list)->array;
+		second = (*list)->next->array;
+		(*list) = (*list)->next ;
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:58:44 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/15 12:15:29 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/15 18:20:26 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,8 @@ void	check_args(int argc, char **array)
 	}
 	while (all.index < count_total(array))
 	{
-		if (array[all.index][0] == '\0')
+		if (array[all.index][0] == '\0' || \
+		(lecount(array[all.index]) == 1 && array[all.index][0] == '-'))
 		{
 			putstr("Error");
 			exit(1);
@@ -133,16 +134,18 @@ int main(int argc, char **argv)
     check_double(num, &add);
 	check_greater(num, &add);
     function_made(num, list, &add);
-    // rr_rotate(&list, &list_b);
-    // pb_push(&list, &list_b);
-    // pa_push(&list, &list_b);
-	// check_if_only_tree(&list);
-	int i = 0;
-    while (list != NULL && i <= add.address)
+	int rus ;
+	at_linked(&list);
+	rus = check_highest(&list);
+	int po = check_sort(&list);
+	printf(" %d ", po);
+	printf("----?%d\n", rus);
+	// if (rus == 1)
+	// 	ra_rotate(&list);
+    while (list != NULL)
     {
-		printf("%d --> \n",i);
-		i++;
-        printf("List_A==>>>>>[%d]\n", list->array);
+        printf("List_A==>>>>> [%d]\n", list->array);
         list = list->next;
     }
+
 }
