@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:58:44 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/15 20:44:45 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/15 21:54:51 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,6 +136,13 @@ int main(int argc, char **argv)
     function_made(num, list, &add);
 	at_linked(&list);
 	check_tree(&list);
+	sort_five(&list, &list_b);
+	while (list_b != NULL)
+    {
+        printf("List_B==>>>>> [%d]\n", list_b->array);
+        list_b = list_b->next;
+    }
+	printf("\n\n\n");
     while (list != NULL)
     {
         printf("List_A==>>>>> [%d]\n", list->array);
