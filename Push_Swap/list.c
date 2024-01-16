@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 11:19:23 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/15 18:17:59 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/16 12:17:25 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,36 @@ void at_linked(Node **list)
 	}
 }
 
+int check_all_heights(Node **list)
+{
+	int flag;
+	Node *all;	
+	Node *temp;
+	int index ;
+	int flagturn ;
+
+
+	flag = 0;
+	index = 0;
+	flagturn = 1;
+	all = (*list);
+	while (all)
+	{
+		temp = (*list) ;
+		while (temp)
+		{
+			if (all->index > temp->index )
+				index++ ;
+			if (index == count_list(*list) - 1)
+				return flagturn;
+			temp = temp->next;
+		}
+		index = 0;
+		flagturn++ ;
+		all = all->next ;
+	}
+	return index;
+}
 int check_highest(Node **list)
 {
 	int flag;

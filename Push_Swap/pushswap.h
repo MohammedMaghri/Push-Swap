@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:54:30 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/15 21:53:29 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/16 12:15:26 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ typedef struct Node
 	struct	Node *next;
 } Node ;
 
+int check_all_heights(Node **list);
 void sort_five(Node **list, Node **list_b);
 void check_tree(Node **list);
 void	check_at_index(Node *list);

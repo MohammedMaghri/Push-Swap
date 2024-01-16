@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:58:44 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/15 21:54:51 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/16 15:11:46 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,7 @@ int main(int argc, char **argv)
     t_addr  add ;
     Node    *list;
     Node    *list_b;
+
     list = malloc(sizeof(struct Node));
 	list_b = NULL ;
 	check_args(argc, argv);
@@ -135,14 +136,15 @@ int main(int argc, char **argv)
 	check_greater(num, &add);
     function_made(num, list, &add);
 	at_linked(&list);
-	check_tree(&list);
 	sort_five(&list, &list_b);
-	while (list_b != NULL)
+	printf("\n\n\n");
+	  while (list_b != NULL)
     {
-        printf("List_B==>>>>> [%d]\n", list_b->array);
+        printf("List_B==>>>>> [%d]\n", list_b->index);
         list_b = list_b->next;
     }
-	printf("\n\n\n");
+	printf("\n\n");
+	check_tree(&list);
     while (list != NULL)
     {
         printf("List_A==>>>>> [%d]\n", list->array);
