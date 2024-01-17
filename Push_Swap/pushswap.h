@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:54:30 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/17 11:24:26 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/17 14:12:11 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ typedef struct Node
 	struct Node	*next;
 }	t_Node;
 
+void check_four(t_Node **list, t_Node **list_b);
 void	push_positiong(t_Node **list, t_Node **list_b);
 int		check_less(t_Node **list);
 int		bring_last(t_Node **list);

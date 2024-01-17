@@ -6,16 +6,16 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 21:13:51 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/17 11:24:05 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/17 14:12:49 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-int	bring_last(t_Node **list)
+int bring_last(t_Node **list)
 {
-	t_Node	*last;
-	int		num;
+	t_Node *last;
+	int num ;
 
 	last = (*list);
 	while (last->next->next != NULL)
@@ -24,86 +24,85 @@ int	bring_last(t_Node **list)
 	num = last->array ;
 	return (num);
 }
-
-void	if_four(t_Node **list, t_Node **list_b)
+void push_positiong(t_Node **list, t_Node **list_b)
 {
+	int small ;
+
 	if (count_list(*list) == 4)
 	{
-		while (count_list(*list) > 3)
-		{
-			if (check_less(list) == 1)
-				pb_push(list, list_b);
-			else if (check_less(list) == 2)
-				ra_rotate(list);
-			else if (check_less(list) == 3)
-				rra_rotate(list);
-			else if (check_less(list) == 4)
-				rra_rotate(list);
-			else if (check_less(list) == 5)
-				rra_rotate(list);
-		}
-		check_tree(list);
-		pa_push(list, list_b);
-		return ;
-	}
-}
-
-void	push_positiong(t_Node **list, t_Node **list_b)
-{
-	if (count_list(*list) == 4)
-	{
-		if_four(list, list_b);
+		check_four(list, list_b);
 		return ;
 	}
 	while (count_list(*list) > 3)
 	{
-		if (check_less(list) == 1)
+		small = check_less(list);
+		if (small == 1)
 			pb_push(list, list_b);
-		else if (check_less(list) == 2)
+		else if (small == 2)
 			ra_rotate(list);
-		else if (check_less(list) == 3)
+		else if (small == 3)
 			rra_rotate(list);
-		else if (check_less(list) == 4)
+		else if (small == 4)
 			rra_rotate(list);
-		else if (check_less(list) == 5)
+		else if (small == 5)
 			rra_rotate(list);
 	}
 	check_tree(list);
 	pa_push(list, list_b);
 	pa_push(list, list_b);
 }
-
-void	for_check_tree(t_Node **list)
+void check_four(t_Node **list, t_Node **list_b)
 {
-	if (check_highest(list) == 2)
+	int small;
+
+	while (count_list(*list) > 3)
 	{
-		rra_rotate(list);
-		if (check_sort(list) == -1)
-			sa_swap(*list);
-		return ;
+		small = check_less(list);
+		if (small == 1)
+			pb_push(list, list_b);
+		else if (small == 2)
+			ra_rotate(list);
+		else if (small == 3)
+			rra_rotate(list);
+		else if (small == 4)
+			rra_rotate(list);
+		else if (small == 5)
+			rra_rotate(list);
 	}
-	else if (check_highest(list) == 3)
-	{
-		if (check_sort(list) == -1)
-			sa_swap(*list);
-		return ;
-	}
+	check_tree(list);
+	pa_push(list, list_b);
 }
-
-void	check_tree(t_Node **list)
+void check_tree(t_Node **list)
 {
-	if (count_list(*list) == 2)
-	{
-		if (check_sort(list) == -1)
-			sa_swap(*list);
+	int	this;
+
+	if (check_sort(list) == 0)
 		return ;
-	}
-	else if (check_highest(list) == 1)
+	this = check_highest(list);
+	if (this == 1)
 	{
 		ra_rotate(list);
 		if (check_sort(list) == -1)
 			sa_swap(*list);
 		return ;
 	}
-	for_check_tree(list);
+	else if (count_list(*list) == 2)
+		{
+			if (check_sort(list) == -1)
+				sa_swap(*list);
+			return ;
+		}
+	else if (this == 2)
+	{
+		rra_rotate(list);
+		if (check_sort(list) == -1)
+			sa_swap(*list);
+		return ;
+	}
+	else if (this == 3)
+	{
+		if (check_sort(list) == -1)
+			sa_swap(*list);
+		return ;
+	}
 }
