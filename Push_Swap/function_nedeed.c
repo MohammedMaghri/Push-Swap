@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:58:44 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/16 18:58:48 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/17 11:32:28 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,8 +122,8 @@ int main(int argc, char **argv)
     char    **test;
     int     *num;
     t_addr  add ;
-    Node    *list;
-    Node    *list_b;
+    t_Node    *list;
+    t_Node    *list_b;
 
     list = malloc(sizeof(struct Node));
 	list_b = NULL ;

@@ -6,15 +6,15 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 14:44:14 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/15 19:43:42 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/17 11:34:35 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-void	sa_swap(Node *list_a)
+void	sa_swap(t_Node *list_a)
 {
-	Node	*first ;
+	t_Node	*first ;
 	int		sec;
 	int		num;
 
@@ -30,11 +30,11 @@ void	sa_swap(Node *list_a)
 	putstr("sa\n");
 }
 
-void	sb_swap(Node *list_b)
+void	sb_swap(t_Node *list_b)
 {
 	int		sec;
 	int		num;
-	Node	*first ;
+	t_Node	*first ;
 
 	if (count_list(list_b) <= 1)
 		return ;
@@ -48,7 +48,7 @@ void	sb_swap(Node *list_b)
 	putstr("sb\n");
 }
 
-void	ss_swap(Node *list_a, Node *list_b)
+void	ss_swap(t_Node *list_a, t_Node *list_b)
 {
 	if (count_list(list_a) <= 1 || count_list(list_b) <= 1)
 		return ;

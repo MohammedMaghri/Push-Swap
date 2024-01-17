@@ -6,17 +6,17 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 14:39:45 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/15 18:43:47 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/17 11:33:35 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-void	ra_rotate(Node **list_a)
+void	ra_rotate(t_Node **list_a)
 {
-	Node	*flag ;
-	Node	*track ;
-	Node	*follow;
+	t_Node	*flag ;
+	t_Node	*track ;
+	t_Node	*follow;
 
 	if (count_list(*list_a) == 1)
 		return ;
@@ -31,11 +31,11 @@ void	ra_rotate(Node **list_a)
 	putstr("ra\n");
 }
 
-void	rb_rotate(Node **list_b)
+void	rb_rotate(t_Node **list_b)
 {
-	Node	*flag ;
-	Node	*track ;
-	Node	*follow;
+	t_Node	*flag ;
+	t_Node	*track ;
+	t_Node	*follow;
 
 	if (count_list(*list_b) == 1)
 		return ;
@@ -50,7 +50,7 @@ void	rb_rotate(Node **list_b)
 	putstr("rb\n");
 }
 
-void	rr_rotate(Node **list_a, Node **list_b)
+void	rr_rotate(t_Node **list_a, t_Node **list_b)
 {
 	ra_rotate((list_a));
 	rb_rotate((list_b));
