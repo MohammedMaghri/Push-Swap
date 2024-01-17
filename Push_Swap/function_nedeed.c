@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:58:44 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/17 13:59:21 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/17 22:36:50 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	check_double(int *num, t_addr *ind)
 		{
 			if (doble.flag == num[doble.increment])
 			{
-				putstr("error");
+				putstr("error..");
 				exit(1);
 			}
 			doble.increment++ ;
@@ -95,6 +95,29 @@ void	check_args(int argc, char **array)
 	}
 	while (all.index < count_total(array))
 	{
+		while (array[all.index][i])
+		{
+			if ((lecount(array[all.index]) == 1 && array[all.index][i] == '+') || \
+			(number_only(array[all.index][i]) == 0 && array[all.index][i + 1] == '+' ))
+			{
+				putstr("Error.");
+				exit(1);
+			}
+			if ((number_only(array[all.index][i]) == 0 && array[all.index][i + 1] == '-') || \
+			(array[all.index][i] == '+' && array[all.index][i + 1] == '+'))
+			{
+				putstr("Error..\n");
+				exit(1);
+			}
+			if ((array[all.index][i] == '-' && array[all.index][i + 1] == ' ' ) || \
+			(array[all.index][i] == '-' && array[all.index][i + 1] == '\0'))
+			{
+				putstr("Error");
+				exit(1);
+			}
+			i++;
+		}
+		i = 0;
 		if (array[all.index][0] == '\0' || \
 		(lecount(array[all.index]) == 1 && array[all.index][0] == '-'))
 		{
@@ -114,6 +137,15 @@ void	check_args(int argc, char **array)
 		all.index++ ;
 	}
 }
+int number_only(char string)
+{
+	if (string >= '0' && string <= '9')
+		return (0);
+	if (string == '-')
+		return (-1);
+	return (1);
+}
+
 int main(int argc, char **argv)
 {
 
@@ -124,6 +156,7 @@ int main(int argc, char **argv)
     t_addr  add ;
     t_Node    *list;
     t_Node    *list_b;
+	t_lspies	lsp;
 
     list = malloc(sizeof(struct Node));
 	list_b = NULL ;
@@ -135,8 +168,9 @@ int main(int argc, char **argv)
     check_double(num, &add);
 	check_greater(num, &add);
     function_made(num, list, &add);
+	index_all(&list, &list_b, &lsp);
 	at_linked(&list);
-	push_positiong(&list, &list_b);
+	// push_positiong(&list, &list_b);
 	  while (list_b != NULL)
     {
         printf("List_B==>>>>> [%d]\n", list_b->array);

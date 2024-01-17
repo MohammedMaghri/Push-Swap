@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:37:22 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/17 11:40:32 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/17 20:42:48 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	check_highest(t_Node **list)
 	int		flagturn ;
 
 	flag = 0;
-	flagturn = 1;
+	flagturn = 0;
 	all = (*list);
 	while (all)
 	{

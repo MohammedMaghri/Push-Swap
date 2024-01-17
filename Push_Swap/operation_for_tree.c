@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 21:13:51 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/17 14:12:49 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/17 20:48:36 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,11 @@ void push_positiong(t_Node **list, t_Node **list_b)
 {
 	int small ;
 
+	if (count_list(*list) == 3)
+	{
+		check_tree(list);
+		return ;
+	}
 	if (count_list(*list) == 4)
 	{
 		check_four(list, list_b);
@@ -79,27 +84,27 @@ void check_tree(t_Node **list)
 	if (check_sort(list) == 0)
 		return ;
 	this = check_highest(list);
-	if (this == 1)
+	if (count_list(*list) == 2)
+		{
+			if (check_sort(list) == -1)
+				sa_swap(*list);
+			return ;
+		}
+	if (this == 0)
 	{
 		ra_rotate(list);
 		if (check_sort(list) == -1)
 			sa_swap(*list);
 		return ;
 	}
-	else if (count_list(*list) == 2)
-		{
-			if (check_sort(list) == -1)
-				sa_swap(*list);
-			return ;
-		}
-	else if (this == 2)
+	if (this == 1)
 	{
 		rra_rotate(list);
 		if (check_sort(list) == -1)
 			sa_swap(*list);
 		return ;
 	}
-	else if (this == 3)
+	if (this == 2)
 	{
 		if (check_sort(list) == -1)
 			sa_swap(*list);
