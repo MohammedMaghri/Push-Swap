@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:58:44 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/17 22:36:50 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/18 12:31:45 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,13 +104,15 @@ void	check_args(int argc, char **array)
 				exit(1);
 			}
 			if ((number_only(array[all.index][i]) == 0 && array[all.index][i + 1] == '-') || \
-			(array[all.index][i] == '+' && array[all.index][i + 1] == '+'))
+			((array[all.index][i] == '+' && array[all.index][i + 1] == '+') || \
+			((array[all.index][i] == '+' && array[all.index][i + 1] == '\0')) || \
+			(array[all.index][i] == '+' && array[all.index][i + 1] == ' ')))
 			{
 				putstr("Error..\n");
 				exit(1);
 			}
 			if ((array[all.index][i] == '-' && array[all.index][i + 1] == ' ' ) || \
-			(array[all.index][i] == '-' && array[all.index][i + 1] == '\0'))
+			((array[all.index][i] == '-' && array[all.index][i + 1] == '\0') || (array[all.index][i] == '-' && array[all.index][i + 1] == '+' )))
 			{
 				putstr("Error");
 				exit(1);
@@ -168,8 +170,8 @@ int main(int argc, char **argv)
     check_double(num, &add);
 	check_greater(num, &add);
     function_made(num, list, &add);
-	index_all(&list, &list_b, &lsp);
 	at_linked(&list);
+	index_all(&list, &list_b, &lsp);
 	// push_positiong(&list, &list_b);
 	  while (list_b != NULL)
     {
