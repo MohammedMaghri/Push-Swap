@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:58:44 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/19 12:35:02 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/19 14:16:53 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,13 @@ void	for_main(char **argv)
 	function_made(num, list, &add);
 	at_linked(&list);
 	index_all(&list, &list_b, &lsp);
+	// int thisshit = check_if_up(&list, 16);
+	// printf("||  %d  ||\n", thisshit);
+	// while (list != NULL)
+	// {
+	// 	printf("| %d |---| %d |\n", list->array, list->index);
+	// 	list = list->next;
+	// }
 }
 
 int	main(int argc, char **argv)

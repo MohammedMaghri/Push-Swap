@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 14:42:06 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/18 16:00:24 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/19 14:00:32 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ void	rrb_rotate(t_Node **list_b)
 	position->next = NULL;
 	head->next = (*list_b);
 	(*list_b) = head;
+	putstr("rrb\n");
 }
 
 void	rrr_rotate(t_Node **list_a, t_Node **list_b)

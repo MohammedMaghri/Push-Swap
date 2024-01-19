@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 14:44:14 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/18 16:57:10 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/19 12:49:24 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	sa_swap(t_Node *list_a)
 	numindex = first->index;
 	first = first->next;
 	sec = first->array;
-	secindex  = first->index ; 
+	secindex = first->index ;
 	list_a->array = sec;
 	list_a->index = secindex;
 	list_a = list_a->next;

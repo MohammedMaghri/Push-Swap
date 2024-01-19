@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 11:19:23 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/18 11:27:06 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/19 13:18:25 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,22 @@ void	function_made(int *num, t_Node *list, t_addr *add)
 		sadd_list(list, num[made.index]);
 		made.index++;
 	}
+}
+
+int	count_l(t_Node *list)
+{
+	t_parc	count;
+
+	count.index = 0;
+
+	if (!list)
+		return (0);
+	while (list->next != NULL)
+	{
+		list = list->next ;
+		count.index++ ;
+	}
+	return (count.index);
 }
 
 int	count_list(t_Node *list)

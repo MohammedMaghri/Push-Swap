@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 22:01:41 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/19 12:30:05 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/19 14:29:10 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,23 @@ int	check_if_up(t_Node **list, int index)
 {
 	t_Node	*all;
 	int		i;
+	int		total;
+	int		this_res;
 
 	i = 0;
 	all = *list;
-	while (all && all->index != index)
+	total = (count_list(*list) / 2);
+	while (all != NULL)
 	{
-		i++;
+		if (all->index == index)
+			break;
 		all = all->next;
+		i++;
 	}
-	return (i);
+	this_res = (total - i);
+	if (this_res <= 0)
+		return -1;
+	return (0);
 }
 
 void	index_all(t_Node **list, t_Node **list_b, t_lspies *lsp)
@@ -64,16 +72,23 @@ void	index_all(t_Node **list, t_Node **list_b, t_lspies *lsp)
 		}
 	}
 	check_tree(list);
-	while (*list_b)
+	while (count_list(*list_b) != 0)
 	{
-		while (((*list)->index - 1) != (*list_b)->index)
+		if (check_if_up((list_b), (*list)->index - 1) == -1)
 		{
-			if (check_if_up((list_b), (*list)->index - 1) < count_list(*list_b))
-				rrb_rotate(list_b);
-			else
+			while (((*list)->index - 1) != ((*list_b)->index))
+			{
 				rb_rotate(list_b);
-		}
-		while (*list_b && (*list)->index == (*list_b)->index + 1)
+			}
 			pa_push(list, list_b);
+		}
+		else 
+		{
+			while (((*list)->index - 1) != ((*list_b)->index))
+			{
+				rrb_rotate(list_b);
+			}
+			pa_push(list, list_b);
+		}
 	}
 }

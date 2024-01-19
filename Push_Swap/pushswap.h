@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:54:30 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/19 12:36:38 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/19 13:18:51 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ typedef struct lspies
 	int	pvttwo;
 }	t_lspies;
 
+int		count_l(t_Node *list);
 void	chek_minis(char *array);
 void	check_more_min(char *array);
 void	check_args(char **array);
