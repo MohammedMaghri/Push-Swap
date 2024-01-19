@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:54:30 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/17 22:04:29 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/19 12:36:38 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct forparcing
 	int		increment;
 	char	*allocation;
 	char	**twode;
+	int		i;
 }	t_parc;
 
 typedef struct foradress
@@ -57,14 +58,21 @@ typedef struct Node
 
 typedef struct lspies
 {
-	int lastpivot;
-	int pvtone;
-	int pvttwo;
-} t_lspies;
+	int	lastpivot;
+	int	pvtone;
+	int	pvttwo;
+}	t_lspies;
 
-void index_all(t_Node **list, t_Node **list_b, t_lspies *lsp);
-int number_only(char string);
-void check_four(t_Node **list, t_Node **list_b);
+void	chek_minis(char *array);
+void	check_more_min(char *array);
+void	check_args(char **array);
+void	check_double(int *num, t_addr *ind);
+void	check_other_plus(char **array);
+void	check_plus(char **array);
+int		check_if_up(t_Node **list, int index);
+void	index_all(t_Node **list, t_Node **list_b, t_lspies *lsp);
+int		number_only(char string);
+void	check_four(t_Node **list, t_Node **list_b);
 void	push_positiong(t_Node **list, t_Node **list_b);
 int		check_less(t_Node **list);
 int		bring_last(t_Node **list);
