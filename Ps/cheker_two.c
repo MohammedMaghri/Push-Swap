@@ -6,18 +6,17 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 12:00:15 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/19 12:00:52 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/19 18:49:38 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-void chek_minis(char *array)
+void	chek_minis(char *array)
 {
-	t_parc all;
+	t_parc	all;
 
 	all.index = 0;
-
 	if (array[0] == '\0' || \
 	(lecount(array) == 1 && array[0] == '-'))
 	{
@@ -26,22 +25,24 @@ void chek_minis(char *array)
 	}
 }
 
-void check_more_min(char *array)
+void	check_more_min(char *array)
 {
 	t_parc	all;
 
 	all.index = 0;
 	while (array[all.index])
+	{
+		if ((array[all.index] == '-' && array[all.index + 1] == ' ' ) || \
+		((array[all.index] == '-' && array[all.index + 1] == '\0') || \
+			(array[all.index] == '-' && array[all.index + 1] == '+' )))
 		{
-			if ((array[all.index] == '-' && array[all.index + 1] == ' ' ) || \
-			((array[all.index]== '-' && array[all.index + 1] == '\0') || (array[all.index] == '-' && array[all.index + 1] == '+' )))
-			{
-				putstr("Error");
-				exit(1);
-			}
-			all.index++;
+			putstr("Error");
+			exit(1);
 		}
+		all.index++;
+	}
 }
+
 void	check_args(char **array)
 {
 	int		i;

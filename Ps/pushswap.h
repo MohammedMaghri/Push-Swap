@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:54:30 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/19 16:57:06 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/20 13:01:30 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ typedef struct forparcing
 	char	*allocation;
 	char	**twode;
 	int		i;
+	int		checkpoint;
+	char	*temp;
 }	t_parc;
 
 typedef struct foradress
@@ -63,6 +65,7 @@ typedef struct lspies
 	int	pvttwo;
 }	t_lspies;
 
+void	pass_function(char **twode, char *string);
 int		count_l(t_Node *list);
 void	chek_minis(char *array);
 void	check_more_min(char *array);

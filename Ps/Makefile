@@ -6,11 +6,17 @@ CC= cc
 RM= rm -rf
 all : $(var)
 
-$(var) : $(OBJS)
+$(var): $(OBJS) pushswap.h
 	$(CC) $(CFLAGS) -o $(var) $(OBJS)
+
+%.o: %.c pushswap.h
+	@$(CC) $(CFLAGS) -c $< -o $@
+
+re : fclean  all
 
 clean: $(var)
 	$(RM) $(OBJS)
+
 fclean: clean
-	$(RM) $(var) $(OBJS)
-	 
+	$(RM) $(var)
+.PHONY : fclean all

@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 11:59:20 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/19 17:41:00 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/19 18:57:58 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,10 @@ void	check_double(int *num, t_addr *ind)
 		doble.index++;
 	}
 }
-void check_plus(char **array)
+
+void	check_plus(char **array)
 {
-	t_parc all;
+	t_parc	all;
 
 	all.index = 0 ;
 	all.i = 0;
@@ -48,10 +49,14 @@ void check_plus(char **array)
 	{
 		while (array[all.index][all.i])
 		{
-			if ((number_only(array[all.index][all.i ]) == 0 && array[all.index][all.i + 1] == '-') || \
-			((array[all.index][all.i] == '+' && array[all.index][all.i + 1] == '+') || \
-			((array[all.index][all.i] == '+' && array[all.index][all.i + 1] == '\0')) || \
-			(array[all.index][all.i] == '+' && array[all.index][all.i + 1] == ' ')))
+			if ((number_only(array[all.index][all.i]) == 0 && \
+			array[all.index][all.i + 1] == '-') || \
+			((array[all.index][all.i] == '+' && \
+			array[all.index][all.i + 1] == '+') || \
+			((array[all.index][all.i] == '+' && \
+			array[all.index][all.i + 1] == '\0')) || \
+			(array[all.index][all.i] == '+' && \
+			array[all.index][all.i + 1] == ' ')))
 			{
 				putstr("Error\n");
 				exit(1);
@@ -63,9 +68,9 @@ void check_plus(char **array)
 	}
 }
 
-void check_other_plus(char **array)
+void	check_other_plus(char **array)
 {
-	t_parc all;
+	t_parc	all;
 
 	all.index = 0;
 	all.i = 0;
@@ -73,8 +78,10 @@ void check_other_plus(char **array)
 	{
 		while (array[all.index][all.i])
 		{
-			if ((lecount(array[all.index]) == 1 && array[all.index][all.i] == '+') || \
-			(number_only(array[all.index][all.i]) == 0 && array[all.index][all.i + 1] == '+' ))
+			if ((lecount(array[all.index]) == 1 && \
+			array[all.index][all.i] == '+') || \
+			(number_only(array[all.index][all.i]) == 0 && \
+			array[all.index][all.i + 1] == '+'))
 			{
 				putstr("Error");
 				exit(1);

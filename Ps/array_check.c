@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 17:34:38 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/17 21:42:31 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/20 13:09:09 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,10 +88,7 @@ int	*convert_to_number(char **string, t_addr *add)
 	convert.total = count_total(string);
 	number = malloc(sizeof(int) * convert.total);
 	if (!number)
-	{
-		free_all(string);
 		exit(1);
-	}
 	while (convert.index < convert.total && convert.increment < convert.total)
 	{
 		if (string[convert.increment][0] == '\0')
@@ -107,28 +104,28 @@ int	*convert_to_number(char **string, t_addr *add)
 
 char	*keep_one(char *string)
 {
-	int		index ;
-	char	*allocation;
-	int		incremnt;
+	t_parc	list;
 
-	index = 0;
-	incremnt = 0;
-	allocation = malloc(sizeof(char) * lecount(string) + 1);
-	while (string[index])
+	list.index = 0;
+	list.increment = 0;
+	list.allocation = malloc(sizeof(char) * lecount(string) + 1);
+	if (!list.allocation)
+		exit(1);
+	while (string[list.index])
 	{
-		if (string[index] == ' ' && string[index + 1] != ' ')
+		if (string[list.index] == ' ' && string[list.index + 1] != ' ')
 		{
-			allocation[incremnt] = ' ';
-			incremnt++ ;
+			list.allocation[list.increment] = ' ';
+			list.increment++ ;
 		}
-		if (string[index] != ' ')
+		if (string[list.index] != ' ')
 		{
-			allocation[incremnt] = string[index];
-			incremnt++ ;
+			list.allocation[list.increment] = string[list.index];
+			list.increment++ ;
 		}
-		index++ ;
+		list.index++ ;
 	}
-	allocation[incremnt] = '\0';
+	list.allocation[list.increment] = '\0';
 	free(string);
-	return (allocation);
+	return (list.allocation);
 }

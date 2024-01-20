@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 11:19:23 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/19 13:18:25 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/20 12:00:48 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	sadd_list(t_Node *add, int num)
 	t_Node	*str;
 
 	str = malloc(sizeof(struct Node));
+	if (!str)
+		exit(1);
 	while (add->next != NULL)
 		add = add->next;
 	add->next = str;
@@ -38,6 +40,7 @@ void	function_made(int *num, t_Node *list, t_addr *add)
 		sadd_list(list, num[made.index]);
 		made.index++;
 	}
+	free(num);
 }
 
 int	count_l(t_Node *list)
@@ -45,7 +48,6 @@ int	count_l(t_Node *list)
 	t_parc	count;
 
 	count.index = 0;
-
 	if (!list)
 		return (0);
 	while (list->next != NULL)
@@ -61,7 +63,6 @@ int	count_list(t_Node *list)
 	t_parc	count;
 
 	count.index = 1;
-
 	if (!list)
 		return (0);
 	while (list->next != NULL)
@@ -90,22 +91,4 @@ void	at_linked(t_Node **list)
 		}
 		link = link->next;
 	}
-}
-
-int	check_sort(t_Node **list)
-{
-	t_Node	*all;
-	int		flag;
-
-	flag = 0;
-	all = (*list);
-	while (all->next != NULL)
-	{
-		if (all->index > all->next->index)
-			flag = -1;
-		if (flag == -1)
-			return (-1);
-		all = all->next;
-	}
-	return (0);
 }

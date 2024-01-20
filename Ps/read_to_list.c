@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 14:38:12 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/14 21:13:48 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/20 13:01:10 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,34 +76,27 @@ char	*string_maker(char *string)
 	return (allocation);
 }
 
-char	**read_to_list(char *string)
+void	pass_function(char **twode, char *string)
 {
-	t_parc	list;
-	char	*temp;
-	int		checkpoint;
+	t_parc	list ;
 
-	checkpoint = 0;
 	list.index = 0;
-	list.increment = 0;
-	list.twode = malloc(sizeof(char **) * 1000);
-	if (!list.twode)
-		exit(1);
 	while (string[list.index] && lecount(string) != 0)
 	{
 		if (string[list.index] == ' ')
 		{
-			checkpoint = list.index;
+			list.checkpoint = list.index;
 			list.index++ ;
-			list.twode[list.increment] = make_new(string, checkpoint);
-			temp = string_maker(&string[list.index]);
+			twode[list.increment] = make_new(string, list.checkpoint);
+			list.temp = string_maker(&string[list.index]);
 			free(string);
-			string = string_maker(temp);
-			free(temp);
+			string = string_maker(list.temp);
+			free(list.temp);
 			list.index = 0;
 			list.increment++ ;
 		}
 		list.index++;
 	}
-	list.twode[list.increment] = NULL;
-	return (list.twode);
+	twode[list.increment] = NULL;
+	free(string);
 }

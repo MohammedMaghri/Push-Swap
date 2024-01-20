@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:58:44 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/19 17:50:12 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/20 12:01:33 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,16 @@ char	*move_string(char *string)
 	return (all.allocation);
 }
 
-char	*merge_in_one(char **string)
+char	*merge_in_one(char **string, int ac)
 {
 	t_fac	all;
 
 	all.index = 1;
-	all.increment = 0;
 	all.counter = 0;
 	all.total = count_total(string);
-	all.allocation = malloc(sizeof(char **) * 1000);
+	all.allocation = malloc(sizeof(char **) * (ac + 1));
 	if (!all.allocation)
-		return (NULL);
+		exit(1);
 	while (all.index < all.total)
 	{
 		while (string[all.index][all.increment])
@@ -63,7 +62,7 @@ int	number_only(char string)
 	return (1);
 }
 
-void	for_main(char **argv)
+void	for_main(char **argv, int argc)
 {
 	int			*num;
 	t_addr		add;
@@ -74,12 +73,14 @@ void	for_main(char **argv)
 	list = malloc(sizeof(struct Node));
 	list_b = NULL ;
 	check_args(argv);
-	num = convert_to_number(read_to_list(keep_one(merge_in_one(argv))), &add);
+	num = convert_to_number(read_to_list(keep_one(merge_in_one(argv, argc))) \
+	, &add);
 	check_double(num, &add);
 	check_greater(num, &add);
 	function_made(num, list, &add);
 	at_linked(&list);
 	index_all(&list, &list_b, &lsp);
+	exit(0);
 }
 
 int	main(int argc, char **argv)
@@ -87,7 +88,7 @@ int	main(int argc, char **argv)
 	if (argc <= 1)
 	{
 		putstr("Error");
-		exit(0);
+		exit(1);
 	}
-	for_main(argv);
+	for_main(argv, argc);
 }
