@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 14:38:12 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/20 13:01:10 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/20 16:50:15 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ char	*make_new(char *string, int checkpoint)
 	index = 0;
 	allocation = malloc(sizeof(char) * (checkpoint + 1));
 	if (!allocation)
-		exit(1);
+		return (NULL);
 	while (index < checkpoint)
 	{
 		allocation[index] = string[index];
@@ -66,7 +66,7 @@ char	*string_maker(char *string)
 	index = 0;
 	allocation = malloc(sizeof(char) * (lecount(string) + 1));
 	if (!allocation)
-		exit(1);
+		return (NULL);
 	while (string[index])
 	{
 		allocation[index] = string[index];
@@ -81,6 +81,7 @@ void	pass_function(char **twode, char *string)
 	t_parc	list ;
 
 	list.index = 0;
+	list.increment = 0;
 	while (string[list.index] && lecount(string) != 0)
 	{
 		if (string[list.index] == ' ')

@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:58:44 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/20 12:01:33 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/20 16:50:05 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ char	*merge_in_one(char **string, int ac)
 	t_fac	all;
 
 	all.index = 1;
+	all.increment = 0;
 	all.counter = 0;
 	all.total = count_total(string);
 	all.allocation = malloc(sizeof(char **) * (ac + 1));
@@ -80,9 +81,7 @@ void	for_main(char **argv, int argc)
 	function_made(num, list, &add);
 	at_linked(&list);
 	index_all(&list, &list_b, &lsp);
-	exit(0);
 }
-
 int	main(int argc, char **argv)
 {
 	if (argc <= 1)

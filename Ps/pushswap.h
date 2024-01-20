@@ -6,13 +6,14 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:54:30 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/20 13:01:30 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/20 14:34:37 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSHSWAP_H
 # define PUSHSWAP_H
 
+#include <fcntl.h>
 # include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
@@ -44,6 +45,7 @@ typedef struct forparcing
 	int		i;
 	int		checkpoint;
 	char	*temp;
+	int		*this;
 }	t_parc;
 
 typedef struct foradress
@@ -65,6 +67,9 @@ typedef struct lspies
 	int	pvttwo;
 }	t_lspies;
 
+char	*merge_in_one(char **string, int ac);
+int		*for_bonus(char **argv, int argc);
+void	for_main(char **argv, int argc);
 void	pass_function(char **twode, char *string);
 int		count_l(t_Node *list);
 void	chek_minis(char *array);
