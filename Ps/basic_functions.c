@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 20:06:12 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/20 16:47:39 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/20 11:53:05 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ char	**read_to_list(char *string)
 	list.increment = 0;
 	list.twode = malloc(sizeof(char **) * 1000);
 	if (!list.twode)
-		return (NULL);
+		exit(1);
 	pass_function(list.twode, string);
 	return (list.twode);
 }

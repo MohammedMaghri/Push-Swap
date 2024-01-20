@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 17:34:38 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/20 16:37:53 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/20 13:09:09 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,9 +88,7 @@ int	*convert_to_number(char **string, t_addr *add)
 	convert.total = count_total(string);
 	number = malloc(sizeof(int) * convert.total);
 	if (!number)
-	{
 		exit(1);
-	}
 	while (convert.index < convert.total && convert.increment < convert.total)
 	{
 		if (string[convert.increment][0] == '\0')
