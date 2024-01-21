@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:53:52 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/21 12:29:39 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/21 19:03:31 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ int	check_validity(char *string)
 	}
 	return (0);
 }
+
 void	ss_swap_bonus(t_Node *list_a, t_Node *list_b)
 {
 	if (count_list(list_a) <= 1 || count_list(list_b) <= 1)

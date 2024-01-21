@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 12:25:11 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/21 12:31:30 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/21 19:00:06 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	pa_push_bonus(t_Node **list_a, t_Node **list_b)
 	(*list_a) = flag;
 	(*list_a)->next = keep;
 }
+
 void	ra_rotate_bonus(t_Node **list_a)
 {
 	t_Node	*flag ;
@@ -81,6 +82,6 @@ void	rr_rotate_bonus(t_Node **list_a, t_Node **list_b)
 {
 	if (count_list(*list_a) == 0 || count_list(*list_b) == 0)
 		return ;
-	ra_rotate((list_a));
-	rb_rotate((list_b));
+	ra_rotate_bonus((list_a));
+	rb_rotate_bonus((list_b));
 }

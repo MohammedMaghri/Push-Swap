@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:54:30 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/21 12:30:58 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/21 19:02:07 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,15 @@ typedef struct swap
 	int		counter;
 }	t_fac;
 
+typedef struct bonus
+{
+	int		index;
+	char	**res;
+	int		flag;
+	int		win;
+	int		track;
+	int		increment;
+}	t_bone;
 typedef struct forparcing
 {
 	int		other;
@@ -65,6 +74,22 @@ typedef struct lspies
 	int	pvttwo;
 }	t_lspies;
 
+typedef struct till_null
+{
+	char	*string;
+	int		flag ;
+	int		track;
+	int		rais ;
+}	t_null;
+
+void	last_check(t_Node **list);
+void	check_condition(char *string, int flag);
+void	if_null(char *string, t_Node **list);
+void	read_till_null(int fd, int argc, t_Node **list, t_Node **list_b);
+char	**command_storage(void);
+int		call_to_apply(int number, t_Node **list, t_Node **list_b);
+void	test_the_command(char *string, t_Node **list, t_Node **list_b);
+int		compare_all(char *string, int checker, t_Node **list, t_Node **list_b);
 void	sb_swap_bonus(t_Node *list_b);
 void	sa_swap_bonus(t_Node *list_a);
 void	rrr_rotate_bonus(t_Node **list_a, t_Node **list_b);
@@ -77,10 +102,10 @@ void	pa_push_bonus(t_Node **list_a, t_Node **list_b);
 void	pb_push_bonus(t_Node **list_a, t_Node **list_b);
 void	ss_swap_bonus(t_Node *list_a, t_Node *list_b);
 void	ss_swap(t_Node *list_a, t_Node *list_b);
-int		compare_all(char *string, int checker, t_Node **list, t_Node **list_b);
 void	test_the_command(char *string, t_Node **list, t_Node **list_b);
 char	*merge_in_one(char **string, int ac);
 void	for_main(char **argv, int argc);
+int		compare_all(char *string, int checker, t_Node **list, t_Node **list_b);
 int		*for_bonus(char **argv, int argc);
 void	pass_function(char **twode, char *string);
 int		count_l(t_Node *list);

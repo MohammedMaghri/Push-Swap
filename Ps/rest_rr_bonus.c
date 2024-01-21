@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 12:26:38 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/21 12:31:14 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/21 19:02:39 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	rra_rotate_bonus(t_Node **list_a)
 		return ;
 	if (count_list(*list_a) == 2)
 	{
-		sa_swap(*list_a);
+		sa_swap_bonus(*list_a);
 		return ;
 	}
 	inc = (*list_a);
@@ -45,7 +45,7 @@ void	rrb_rotate_bonus(t_Node **list_b)
 		return ;
 	if (count_list(*list_b) == 2)
 	{
-		sb_swap(*list_b);
+		sb_swap_bonus(*list_b);
 		return ;
 	}
 	head = (*list_b);
@@ -64,9 +64,10 @@ void	rrr_rotate_bonus(t_Node **list_a, t_Node **list_b)
 {
 	if (count_list(*list_a) == 0 || count_list(*list_b) == 0)
 		return ;
-	rrb_rotate(list_a);
-	rrb_rotate(list_b);
+	rrb_rotate_bonus(list_a);
+	rrb_rotate_bonus(list_b);
 }
+
 void	sa_swap_bonus(t_Node *list_a)
 {
 	t_Node	*first ;
