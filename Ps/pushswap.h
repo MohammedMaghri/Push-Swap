@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:54:30 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/20 22:36:42 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/21 12:30:58 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,20 @@ typedef struct lspies
 	int	pvttwo;
 }	t_lspies;
 
-int compare_all(char *string, int checker);
-void test_the_command(char *string);
+void	sb_swap_bonus(t_Node *list_b);
+void	sa_swap_bonus(t_Node *list_a);
+void	rrr_rotate_bonus(t_Node **list_a, t_Node **list_b);
+void	rrb_rotate_bonus(t_Node **list_b);
+void	rra_rotate_bonus(t_Node **list_a);
+void	rr_rotate_bonus(t_Node **list_a, t_Node **list_b);
+void	rb_rotate_bonus(t_Node **list_b);
+void	ra_rotate_bonus(t_Node **list_a);
+void	pa_push_bonus(t_Node **list_a, t_Node **list_b);
+void	pb_push_bonus(t_Node **list_a, t_Node **list_b);
+void	ss_swap_bonus(t_Node *list_a, t_Node *list_b);
+void	ss_swap(t_Node *list_a, t_Node *list_b);
+int		compare_all(char *string, int checker, t_Node **list, t_Node **list_b);
+void	test_the_command(char *string, t_Node **list, t_Node **list_b);
 char	*merge_in_one(char **string, int ac);
 void	for_main(char **argv, int argc);
 int		*for_bonus(char **argv, int argc);

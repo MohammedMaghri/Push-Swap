@@ -1,18 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rr_rotate.c                                        :+:      :+:    :+:   */
+/*   raa_for_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/14 14:39:45 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/21 12:08:01 by mmaghri          ###   ########.fr       */
+/*   Created: 2024/01/21 12:25:11 by mmaghri           #+#    #+#             */
+/*   Updated: 2024/01/21 12:31:30 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-void	ra_rotate(t_Node **list_a)
+void	pb_push_bonus(t_Node **list_a, t_Node **list_b)
+{
+	t_Node	*other ;
+	t_Node	*point ;
+
+	if (*list_a == NULL)
+		return ;
+	other = (*list_b);
+	point = (*list_a)->next;
+	(*list_b) = (*list_a);
+	(*list_a) = point;
+	(*list_b)->next = other;
+}
+
+void	pa_push_bonus(t_Node **list_a, t_Node **list_b)
+{
+	t_Node	*keep ;
+	t_Node	*flag ;
+	t_Node	*move ;
+
+	if (*list_b == NULL)
+		return ;
+	keep = (*list_a);
+	flag = (*list_b);
+	move = (*list_b)->next;
+	(*list_b) = move;
+	(*list_a) = flag;
+	(*list_a)->next = keep;
+}
+void	ra_rotate_bonus(t_Node **list_a)
 {
 	t_Node	*flag ;
 	t_Node	*track ;
@@ -28,10 +57,9 @@ void	ra_rotate(t_Node **list_a)
 		follow = follow->next;
 	follow->next = flag;
 	flag->next = NULL;
-	putstr("ra\n");
 }
 
-void	rb_rotate(t_Node **list_b)
+void	rb_rotate_bonus(t_Node **list_b)
 {
 	t_Node	*flag ;
 	t_Node	*track ;
@@ -47,14 +75,12 @@ void	rb_rotate(t_Node **list_b)
 		follow = follow->next;
 	follow->next = flag;
 	flag->next = NULL;
-	putstr("rb\n");
 }
 
-void	rr_rotate(t_Node **list_a, t_Node **list_b)
+void	rr_rotate_bonus(t_Node **list_a, t_Node **list_b)
 {
 	if (count_list(*list_a) == 0 || count_list(*list_b) == 0)
 		return ;
 	ra_rotate((list_a));
 	rb_rotate((list_b));
-	putstr("rr\n");
 }

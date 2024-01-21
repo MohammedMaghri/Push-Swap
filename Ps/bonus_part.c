@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 16:57:56 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/20 22:45:29 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/21 12:32:06 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,24 +67,38 @@ void check_function(char *string)
 
 	}
 }
-void    read_till_null(int fd, int argc)
+void    read_till_null(int fd, int argc, t_Node **list, t_Node **list_b)
 {
     char *string;
     int flag ;
+    int track;
+    int rais ;
 
+    rais = 0;
     flag  = 1;
     string = malloc((sizeof(char **)) * argc);
     while (flag > 0)
     {
         flag = read(fd, string, 100000);
-		if (lecount(string) != 3 && lecount(string) != 4)
+		if (((lecount(string) != 3 && lecount(string) != 4) || (flag >= 1 && flag <= 2)))
 		{
 			putstr("Error");
 			exit(1);
 		}
-        test_the_command(string);
-		test_the_command(string);
+        test_the_command(string, list, list_b);
     }
+    free(string);
+    track = check_sort(list);
+        if (track == -1)
+        {
+            putstr("KO");
+            exit(1);
+        }
+        else 
+            {
+                putstr("OK");
+                exit(1);
+            }
 }
 
 char **command_storage(void)
@@ -109,38 +123,64 @@ char **command_storage(void)
     return (allocation);
 } 
 
-void test_the_command(char *string)
+void test_the_command(char *string, t_Node **list, t_Node **list_b)
 {
     char	**res ;
     int		flag;
 
     res = command_storage();
     if (lecount(string) >= 5)
-    {
-        putstr("Error");
         exit(1);
-    }
 	else if (lecount(string) == 4)
     {
-		flag = compare_all(string, 4);
+		flag = compare_all(string, 4, list, list_b);
 		if (flag == 1)
 			{
 				putstr("Error");
 				exit(1);
 			}
+        string[0] = '*';
     }
 	else if (lecount(string) == 3)
     {
-		flag = compare_all(string, 3);
+		flag = compare_all(string, 3, list, list_b);
 		if (flag == 1)
 			{
 				putstr("Error");
 				exit(1);
 			}
+        string[0] = '*';
     }
 }
 
-int compare_all(char *string, int checker)
+int call_to_apply(int number, t_Node **list, t_Node **list_b)
+{
+    (void)list_b;
+    if (number == 0)
+        return (sa_swap_bonus((*list)), -1);
+    else if (number == 1)
+        return (sb_swap_bonus((*list)), -1);
+    else if (number == 2)
+        return (ss_swap_bonus((*list), *list_b), -1);
+    else if (number == 3)
+        return (pa_push_bonus((list), (list_b)), -1);
+    else if (number == 4)
+        return (pb_push_bonus((list), (list_b)), -1);
+    else if (number == 5)
+        return (ra_rotate_bonus((list)), -1);
+    else if (number == 6)
+        return (rb_rotate_bonus((list)), -1);
+    else if (number == 7)
+        return (rr_rotate_bonus((list), list_b), -1);
+    else if (number == 8)
+        return (rra_rotate_bonus((list)), -1);
+    else if (number == 9)
+        return (rrb_rotate_bonus((list)), -1);
+    else if (number == 10)
+        return (rrr_rotate_bonus((list), (list_b)), -1);
+    return (0);
+}
+int compare_all(char *string, int checker, t_Node **list, t_Node **list_b)
 {
     int     index;
     char    **res;
@@ -165,9 +205,8 @@ int compare_all(char *string, int checker)
 			{
                 win = (0);
 				flag = 0;
-				printf("{ %d }\n", increment);
+                call_to_apply(increment, list, list_b);
 				return (win);
-				break;
 			}
             index++;
         }
@@ -193,5 +232,5 @@ int main(int argc, char **argv)
 	check_greater(num, &add);
 	function_made(num, list, &add);
 	at_linked(&list);
-    read_till_null(0, argc);
+    read_till_null(0, argc, &list, &list_b);
 }

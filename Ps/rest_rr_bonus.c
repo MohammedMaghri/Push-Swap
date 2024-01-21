@@ -1,42 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rrr_rotate.c                                       :+:      :+:    :+:   */
+/*   rest_rr_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/14 14:42:06 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/21 12:08:38 by mmaghri          ###   ########.fr       */
+/*   Created: 2024/01/21 12:26:38 by mmaghri           #+#    #+#             */
+/*   Updated: 2024/01/21 12:31:14 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-void	check_greater(int *array, t_addr *add)
-{
-	int	index ;
-	int	flag;
-	int	incre;
-
-	index = 0;
-	flag = array[index];
-	while (index <= add->address)
-	{
-		index++ ;
-		incre = index;
-		while (incre < add->address)
-		{
-			if (flag > array[incre])
-				return ;
-			incre++ ;
-		}
-		incre = 0;
-		flag = array[index];
-	}
-	exit(0);
-}
-
-void	rra_rotate(t_Node **list_a)
+void	rra_rotate_bonus(t_Node **list_a)
 {
 	t_Node	*inc ;
 	t_Node	*var ;
@@ -58,10 +34,9 @@ void	rra_rotate(t_Node **list_a)
 	var->next = NULL;
 	inc->next = (*list_a);
 	(*list_a) = inc;
-	putstr("rra\n");
 }
 
-void	rrb_rotate(t_Node **list_b)
+void	rrb_rotate_bonus(t_Node **list_b)
 {
 	t_Node	*head;
 	t_Node	*position;
@@ -83,14 +58,57 @@ void	rrb_rotate(t_Node **list_b)
 	position->next = NULL;
 	head->next = (*list_b);
 	(*list_b) = head;
-	putstr("rrb\n");
 }
 
-void	rrr_rotate(t_Node **list_a, t_Node **list_b)
+void	rrr_rotate_bonus(t_Node **list_a, t_Node **list_b)
 {
 	if (count_list(*list_a) == 0 || count_list(*list_b) == 0)
 		return ;
 	rrb_rotate(list_a);
 	rrb_rotate(list_b);
-	putstr("rrr\n");
+}
+void	sa_swap_bonus(t_Node *list_a)
+{
+	t_Node	*first ;
+	int		sec;
+	int		num;
+	int		numindex;
+	int		secindex ;
+
+	if (count_list(list_a) <= 1)
+		return ;
+	first = list_a;
+	num = first->array;
+	numindex = first->index;
+	first = first->next;
+	sec = first->array;
+	secindex = first->index ;
+	list_a->array = sec;
+	list_a->index = secindex;
+	list_a = list_a->next;
+	list_a->array = num;
+	list_a->index = numindex;
+}
+
+void	sb_swap_bonus(t_Node *list_b)
+{
+	t_Node	*first ;
+	int		sec;
+	int		num;
+	int		numindex;
+	int		secindex ;
+
+	if (count_list(list_b) <= 1)
+		return ;
+	first = list_b;
+	num = first->array;
+	numindex = first->index;
+	first = first->next;
+	sec = first->array;
+	secindex = first->index ;
+	list_b->array = sec;
+	list_b->index = secindex;
+	list_b = list_b->next;
+	list_b->array = num;
+	list_b->index = numindex;
 }
