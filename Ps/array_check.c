@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 17:34:38 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/20 13:09:09 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/21 22:26:11 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,39 @@ int	check_to_add(char **string)
 	return (flag);
 }
 
+void function_check(int number)
+{
+	if (number < 0)
+	{
+		putstr("Error");
+		exit(1);
+	}
+}
+int make_it(char *string)
+{
+	int	index ;
+	int total;
+	int track;
+
+	track = 0;
+	total = 0;
+	index = 0;
+	while (string[index] >= '0' && string[index] <= '9')
+	{
+		total = (total * 10) + (string[index] - '0');
+		if (track > 8)
+			function_check(total);
+		track++ ;
+		index++ ;
+	}
+	return (total);
+}
 int	number_converter(char *string)
 {
 	t_fac	conv;
+	int		index;
 
+	index = 0;
 	conv.index = 0;
 	conv.total = 0;
 	conv.flag = 1;
@@ -70,11 +99,7 @@ int	number_converter(char *string)
 		}
 		conv.index++ ;
 	}
-	while (string[conv.index] >= '0' && string[conv.index] <= '9')
-	{
-		conv.total = (conv.total * 10) + (string[conv.index] - '0');
-		conv.index++ ;
-	}
+	conv.total = make_it(&string[conv.index]);
 	return (conv.total * conv.flag);
 }
 

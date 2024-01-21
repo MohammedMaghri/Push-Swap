@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:58:44 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/20 17:04:44 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/21 21:45:17 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ void	for_main(char **argv, int argc)
 	check_args(argv);
 	num = convert_to_number(read_to_list(keep_one(merge_in_one(argv, argc))) \
 	, &add);
+	printf("|%d|\n", num[0]);
 	check_double(num, &add);
 	check_greater(num, &add);
 	function_made(num, list, &add);
