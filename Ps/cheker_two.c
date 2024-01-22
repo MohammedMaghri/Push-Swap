@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 12:00:15 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/21 21:43:31 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/22 15:11:12 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	chek_minis(char *array)
 	if (array[0] == '\0' || \
 	(lecount(array) == 1 && array[0] == '-'))
 	{
-		putstr("Error");
+		write(2, "Error\n", 6);
 		exit(1);
 	}
 }
@@ -34,10 +34,10 @@ void	check_more_min(char *array)
 	{
 		if ((array[all.index] == '-' && array[all.index + 1] == ' ' ) || \
 		((array[all.index] == '-' && array[all.index + 1] == '\0') || \
-			(array[all.index] == '-' && array[all.index + 1] == '+' )) || 
+			(array[all.index] == '-' && array[all.index + 1] == '+' )) || \
 			(array[all.index] == '+' && array[all.index + 1] == '-' ))
 		{
-			putstr("Error");
+			write(2, "Error\n", 6);
 			exit(1);
 		}
 		all.index++;
@@ -62,7 +62,7 @@ void	check_args(char **array)
 		{
 			if (array[all.index][i + 1] == '\0')
 			{
-				putstr("Error\n");
+				write(2, "Error\n", 6);
 				exit(1);
 			}
 			i++;

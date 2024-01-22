@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:54:30 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/22 11:35:49 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/22 21:51:31 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,15 @@
 
 typedef struct swap
 {
-	int		**puttwode;
-	int		total;
-	int		negat;
-	int		flag;
-	int		index;
-	int		res ;
-	int		increment;
-	char	*allocation;
-	int		counter;
+	int			**puttwode;
+	long long	total;
+	int			negat;
+	int			flag;
+	int			index;
+	int			res ;
+	int			increment;
+	char		*allocation;
+	int			counter;
 }	t_fac;
 
 typedef struct bonus
@@ -82,9 +82,18 @@ typedef struct till_null
 	int		rais ;
 }	t_null;
 
-void	last_check(t_Node **list);
+int		find_bottom_index(t_Node **list);
+void	for_second_iteration(t_Node **list, t_Node **list_b, \
+int *bottom, int *bigger);
+void	for_the_second_of_thesecond(t_Node **list, t_Node **list_b, \
+int *bottomindex);
+void	second_iteration(t_Node **list, t_Node **list_b);
+void	for_condition(t_Node **list, t_Node **list_b, int *bottomindex);
+int		make_it(char *string, int flag);
+void	function_check(long long number, int flag);
+void	last_check(t_Node **list, t_Node **list_b);
 void	check_condition(char *string, int flag);
-void	if_null(char *string, t_Node **list);
+void	if_null(char *string, t_Node **list, t_Node **list_b);
 void	read_till_null(int fd, int argc, t_Node **list, t_Node **list_b);
 char	**command_storage(void);
 int		call_to_apply(int number, t_Node **list, t_Node **list_b);

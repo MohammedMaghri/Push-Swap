@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 16:57:56 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/21 19:01:28 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/22 21:51:53 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,12 +71,17 @@ void	read_till_null(int fd, int argc, t_Node **list, t_Node **list_b)
 	while (nl.flag > 0)
 	{
 		nl.flag = read(fd, nl.string, 100000);
-		if_null(nl.string, list);
+		if_null(nl.string, list, list_b);
 		check_condition(nl.string, nl.flag);
 		test_the_command(nl.string, list, list_b);
 	}
 	free(nl.string);
-	last_check(list);
+	if (count_list(*list_b) > 1)
+	{
+		write(2, "KO\n", 2);
+		exit(1);
+	}
+	last_check(list, list_b);
 }
 
 char	**command_storage(void)

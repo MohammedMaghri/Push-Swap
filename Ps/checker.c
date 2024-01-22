@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 11:59:20 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/19 18:57:58 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/22 17:27:01 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	check_double(int *num, t_addr *ind)
 		{
 			if (doble.flag == num[doble.increment])
 			{
-				putstr("Error\n");
+				write(2, "Error\n", 6);
 				exit(1);
 			}
 			doble.increment++ ;
@@ -58,7 +58,7 @@ void	check_plus(char **array)
 			(array[all.index][all.i] == '+' && \
 			array[all.index][all.i + 1] == ' ')))
 			{
-				putstr("Error\n");
+				write(2, "Error\n", 6);
 				exit(1);
 			}
 			all.i++ ;
@@ -83,7 +83,7 @@ void	check_other_plus(char **array)
 			(number_only(array[all.index][all.i]) == 0 && \
 			array[all.index][all.i + 1] == '+'))
 			{
-				putstr("Error");
+				write(2, "Error\n", 6);
 				exit(1);
 			}
 			all.i++;

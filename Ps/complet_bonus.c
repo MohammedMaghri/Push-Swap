@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 18:32:58 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/22 11:37:34 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/22 21:51:06 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	test_the_command(char *string, t_Node **list, t_Node **list_b)
 		flag = compare_all(string, 4, list, list_b);
 		if (flag == 1)
 		{
-			putstr("Error**");
+			write(2, "Error\n", 6);
 			exit(1);
 		}
 		string[0] = '*';
@@ -33,7 +33,7 @@ void	test_the_command(char *string, t_Node **list, t_Node **list_b)
 		flag = compare_all(string, 3, list, list_b);
 		if (flag == 1)
 		{
-			putstr("Error-\n");
+			write(2, "Error\n", 6);
 			exit(1);
 		}
 		string[0] = '*';
@@ -105,10 +105,12 @@ int	main(int argc, char **argv)
 	t_Node		*list_b;
 
 	list = malloc(sizeof(struct Node));
+	if (!list)
+		exit(1);
 	list_b = NULL ;
 	check_args(argv);
 	num = convert_to_number(read_to_list(keep_one(merge_in_one(argv, argc))) \
-	, &add);
+, &add);
 	check_double(num, &add);
 	function_made(num, list, &add);
 	at_linked(&list);

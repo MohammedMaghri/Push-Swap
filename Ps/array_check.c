@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 17:34:38 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/22 11:41:36 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/22 15:07:49 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,33 +52,6 @@ int	check_to_add(char **string)
 	return (flag);
 }
 
-void function_check(int number)
-{
-	if (number < 0)
-	{
-		putstr("Error");
-		exit(1);
-	}
-}
-int make_it(char *string)
-{
-	int	index ;
-	int total;
-	int track;
-
-	track = 0;
-	total = 0;
-	index = 0;
-	while (string[index] >= '0' && string[index] <= '9')
-	{
-		total = (total * 10) + (string[index] - '0');
-		if (track > 8)
-			function_check(total);
-		track++ ;
-		index++ ;
-	}
-	return (total);
-}
 int	number_converter(char *string)
 {
 	t_fac	conv;
@@ -99,7 +72,7 @@ int	number_converter(char *string)
 		}
 		conv.index++ ;
 	}
-	conv.total = make_it(&string[conv.index]);
+	conv.total = make_it(&string[conv.index], conv.flag);
 	return (conv.total * conv.flag);
 }
 

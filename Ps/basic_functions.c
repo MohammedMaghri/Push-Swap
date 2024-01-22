@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 20:06:12 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/22 11:30:47 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/22 19:57:12 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	putstr(char *string)
 {
 	while (*string)
-		write(2, string++, 1);
+		write(1, string++, 1);
 }
 
 int	lecount(char *string)

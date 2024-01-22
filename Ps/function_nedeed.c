@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:58:44 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/22 11:35:42 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/22 21:52:26 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ char	*move_string(char *string)
 	t_fac	all;
 
 	all.allocation = malloc(sizeof(char) * lecount(string) + 1);
+	if (all.allocation)
+		exit(1);
 	while (string[all.increment])
 	{
 		all.allocation[all.increment] = string[all.increment];
@@ -75,7 +77,6 @@ void	for_main(char **argv, int argc)
 	check_args(argv);
 	num = convert_to_number(read_to_list(keep_one(merge_in_one(argv, argc))) \
 	, &add);
-	printf("|%d|\n", num[0]);
 	check_double(num, &add);
 	check_greater(num, &add);
 	function_made(num, list, &add);
