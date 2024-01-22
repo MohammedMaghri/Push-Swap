@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 17:34:38 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/21 22:26:11 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/22 11:41:36 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,7 @@ char	*keep_one(char *string)
 
 	list.index = 0;
 	list.increment = 0;
-	list.allocation = malloc(sizeof(char) * lecount(string) + 1);
+	list.allocation = malloc(sizeof(char) * 10000);
 	if (!list.allocation)
 		exit(1);
 	while (string[list.index])
