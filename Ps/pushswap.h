@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:54:30 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/22 21:51:31 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/23 13:00:46 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,8 @@ typedef struct till_null
 	int		rais ;
 }	t_null;
 
+void	sort_five(t_Node **list, t_Node **list_b);
+void	out(void);
 int		find_bottom_index(t_Node **list);
 void	for_second_iteration(t_Node **list, t_Node **list_b, \
 int *bottom, int *bigger);

@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 16:57:56 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/22 21:51:53 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/23 13:08:45 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,10 @@ void	read_till_null(int fd, int argc, t_Node **list, t_Node **list_b)
 	nl.flag = 1;
 	nl.string = malloc((sizeof(char **)) * argc);
 	if (!nl.string)
+	{
+		free(nl.string);
 		exit(1);
+	}
 	while (nl.flag > 0)
 	{
 		nl.flag = read(fd, nl.string, 100000);
@@ -76,7 +79,7 @@ void	read_till_null(int fd, int argc, t_Node **list, t_Node **list_b)
 		test_the_command(nl.string, list, list_b);
 	}
 	free(nl.string);
-	if (count_list(*list_b) > 1)
+	if (count_list(*list_b) >= 1)
 	{
 		write(2, "KO\n", 2);
 		exit(1);
@@ -90,7 +93,10 @@ char	**command_storage(void)
 
 	allocation = malloc(sizeof(char **) * (11));
 	if (!allocation)
+	{
+		free_all(allocation);
 		exit(1);
+	}
 	allocation[0] = "sa\n";
 	allocation[1] = "sb\n";
 	allocation[2] = "ss\n";

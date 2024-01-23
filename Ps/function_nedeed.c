@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:58:44 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/22 21:52:26 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/23 13:04:08 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,11 @@ void	for_main(char **argv, int argc)
 	check_greater(num, &add);
 	function_made(num, list, &add);
 	at_linked(&list);
+	if (count_list(list) <= 5)
+	{
+		sort_five(&list, &list_b);
+		exit(0);
+	}
 	index_all(&list, &list_b, &lsp);
 	exit(0);
 }

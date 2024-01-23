@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 11:59:20 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/22 17:27:01 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/23 11:43:58 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,18 @@ void	check_double(int *num, t_addr *ind)
 		while (doble.increment < ind->address)
 		{
 			if (doble.flag == num[doble.increment])
-			{
-				write(2, "Error\n", 6);
-				exit(1);
-			}
+				out();
 			doble.increment++ ;
 		}
 		doble.increment = 0;
 		doble.index++;
 	}
+}
+
+void	out(void)
+{
+	write(2, "Error\n", 6);
+	exit(1);
 }
 
 void	check_plus(char **array)
@@ -57,10 +60,7 @@ void	check_plus(char **array)
 			array[all.index][all.i + 1] == '\0')) || \
 			(array[all.index][all.i] == '+' && \
 			array[all.index][all.i + 1] == ' ')))
-			{
-				write(2, "Error\n", 6);
-				exit(1);
-			}
+				out();
 			all.i++ ;
 		}
 		all.i = 0;
@@ -82,10 +82,7 @@ void	check_other_plus(char **array)
 			array[all.index][all.i] == '+') || \
 			(number_only(array[all.index][all.i]) == 0 && \
 			array[all.index][all.i + 1] == '+'))
-			{
-				write(2, "Error\n", 6);
-				exit(1);
-			}
+				out();
 			all.i++;
 		}
 		all.i = 0;
