@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 11:59:20 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/23 11:43:58 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/23 18:22:27 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	check_double(int *num, t_addr *ind)
 
 void	out(void)
 {
-	write(2, "Error\n", 6);
+	write(2, "Error|||\n", 6);
 	exit(1);
 }
 

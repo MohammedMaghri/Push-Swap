@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 16:57:56 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/23 13:08:45 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/23 20:40:16 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,12 @@ char	*for_saftey(char *string)
 	}
 	allocation[index] = '\0';
 	return (allocation);
+}
+
+void	free_out(char *string)
+{
+	free(string);
+	exit(1);
 }
 
 char	*merge(char *string, char *wedohave)
@@ -59,6 +65,12 @@ char	*merge(char *string, char *wedohave)
 	return (allocation);
 }
 
+void	for_ko(void)
+{
+	write(2, "KO\n", 2);
+	exit(1);
+}
+
 void	read_till_null(int fd, int argc, t_Node **list, t_Node **list_b)
 {
 	t_null	nl;
@@ -67,23 +79,25 @@ void	read_till_null(int fd, int argc, t_Node **list, t_Node **list_b)
 	nl.flag = 1;
 	nl.string = malloc((sizeof(char **)) * argc);
 	if (!nl.string)
-	{
-		free(nl.string);
-		exit(1);
-	}
+		free_out(nl.string);
 	while (nl.flag > 0)
 	{
 		nl.flag = read(fd, nl.string, 100000);
+		if (nl.flag == 0)
+			break ;
 		if_null(nl.string, list, list_b);
 		check_condition(nl.string, nl.flag);
+		// nl.rais = all_of(nl.string);
+		// if (nl.rais == 0)
+		// {
+		// 	write(2, "Error\n", 6);
+		// 	exit(1);
+		// }
 		test_the_command(nl.string, list, list_b);
 	}
 	free(nl.string);
 	if (count_list(*list_b) >= 1)
-	{
-		write(2, "KO\n", 2);
-		exit(1);
-	}
+		for_ko();
 	last_check(list, list_b);
 }
 
@@ -108,6 +122,6 @@ char	**command_storage(void)
 	allocation[8] = "rra\n";
 	allocation[9] = "rrb\n";
 	allocation[10] = "rrr\n";
-	allocation[12] = NULL;
+	allocation[11] = NULL;
 	return (allocation);
 }

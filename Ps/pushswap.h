@@ -6,14 +6,13 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:54:30 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/23 13:00:46 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/23 20:38:21 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSHSWAP_H
 # define PUSHSWAP_H
 
-# include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
@@ -74,14 +73,25 @@ typedef struct lspies
 	int	pvttwo;
 }	t_lspies;
 
+typedef struct the_check
+{
+	char	**res ;
+	int		index;
+	int		increment;
+	int		flag;
+}	t_check;
+
 typedef struct till_null
 {
 	char	*string;
 	int		flag ;
 	int		track;
 	int		rais ;
+	int		res;
 }	t_null;
 
+int		all_of(char *string);
+int		check_all(char *string);
 void	sort_five(t_Node **list, t_Node **list_b);
 void	out(void);
 int		find_bottom_index(t_Node **list);

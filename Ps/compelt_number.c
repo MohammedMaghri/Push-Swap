@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 15:07:03 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/22 17:55:41 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/23 15:08:44 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ int	make_it(char *string, int flag)
 	while (string[index] >= '0' && string[index] <= '9')
 	{
 		total = (total * 10) + (string[index] - '0');
+		function_check(total, flag);
 		index++ ;
 	}
-	function_check(total, flag);
 	return (total);
 }

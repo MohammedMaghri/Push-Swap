@@ -6,12 +6,46 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 18:32:58 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/23 11:25:20 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/23 20:38:09 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
+#include <stdio.h>
 
+void	up_there(char *string, char *res, int *increment, int *flag)
+{
+	if (string[*increment] == res[*increment])
+		*flag += 1;
+}
+
+int	all_of(char *string)
+{
+	int		index ;
+	int		increment;
+	int		flag;
+	char	**res ;
+
+	increment = 0;
+	index = 0;
+	flag = 0;
+	res = command_storage();
+	while (index < 11)
+	{
+		while (string[increment])
+		{
+			if (string[increment] == res[index][increment])
+				flag++ ;
+			if (flag == lecount(string))
+				return (1);
+			increment++ ;
+		}
+		flag = 0;
+		increment = 0;
+		index++ ;
+	}
+	return (0);
+}
 void	test_the_command(char *string, t_Node **list, t_Node **list_b)
 {
 	int		flag;
@@ -68,6 +102,13 @@ int	call_to_apply(int number, t_Node **list, t_Node **list_b)
 	return (0);
 }
 
+void	reset(int *incre, int *index, int *flag)
+{
+	*incre += 1;
+	index = 0;
+	flag = 0;
+}
+
 int	compare_all(char *string, int checker, t_Node **list, t_Node **list_b)
 {
 	t_bone	bon;
@@ -86,33 +127,13 @@ int	compare_all(char *string, int checker, t_Node **list, t_Node **list_b)
 			if (bon.flag == checker)
 			{
 				bon.win = (0);
+				free(bon.res);
 				return (call_to_apply(bon.increment, list, list_b), bon.win);
 			}
 			bon.index++;
 		}
-		bon.increment++ ;
-		bon.index = 0;
-		bon.flag = 0;
+		reset(&bon.increment, &bon.index, &bon.flag);
 	}
-	return (0);
-}
-
-int	main(int argc, char **argv)
-{
-	int			*num;
-	t_addr		add;
-	t_Node		*list;
-	t_Node		*list_b;
-
-	list = malloc(sizeof(struct Node));
-	if (!list)
-		exit(1);
-	list_b = NULL ;
-	check_args(argv);
-	num = convert_to_number(read_to_list(keep_one(merge_in_one(argv, argc))) \
-, &add);
-	check_double(num, &add);
-	function_made(num, list, &add);
-	at_linked(&list);
-	read_till_null(0, argc, &list, &list_b);
+	free(bon.res);
+	return (-1);
 }

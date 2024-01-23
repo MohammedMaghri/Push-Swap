@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:58:44 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/23 13:04:08 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/23 15:19:21 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,6 @@ void	for_main(char **argv, int argc)
 	num = convert_to_number(read_to_list(keep_one(merge_in_one(argv, argc))) \
 	, &add);
 	check_double(num, &add);
-	check_greater(num, &add);
 	function_made(num, list, &add);
 	at_linked(&list);
 	if (count_list(list) <= 5)
