@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 18:32:58 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/23 20:38:09 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/23 23:50:42 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,26 @@ void	up_there(char *string, char *res, int *increment, int *flag)
 {
 	if (string[*increment] == res[*increment])
 		*flag += 1;
+}
+
+char	*add_till(char *string)
+{
+	char	*allocation;	
+	int		index;
+	int		increment;
+
+	index = 0;
+	increment = 0;
+	allocation = malloc(sizeof(char) * 4);
+	if (!allocation)
+		exit(1);
+	while (string[index] && string[index] != '\n')
+	{
+		allocation[index] = string[index];
+		index++ ;
+	}
+	allocation[index] = '\0';
+	return (allocation);
 }
 
 int	all_of(char *string)
@@ -37,24 +57,29 @@ int	all_of(char *string)
 			if (string[increment] == res[index][increment])
 				flag++ ;
 			if (flag == lecount(string))
+			{
+				free(string);
 				return (1);
-			increment++ ;
+			}
+			increment++;
 		}
 		flag = 0;
 		increment = 0;
 		index++ ;
 	}
+	free(string);
 	return (0);
 }
+
 void	test_the_command(char *string, t_Node **list, t_Node **list_b)
 {
 	int		flag;
 
 	if (lecount(string) >= 5)
 		exit(1);
-	else if (lecount(string) == 4)
+	if (lecount(string) == 3)
 	{
-		flag = compare_all(string, 4, list, list_b);
+		flag = compare_all(string, 3, list, list_b);
 		if (flag == 1)
 		{
 			write(2, "Error\n", 6);
@@ -62,9 +87,9 @@ void	test_the_command(char *string, t_Node **list, t_Node **list_b)
 		}
 		string[0] = '*';
 	}
-	else if (lecount(string) == 3)
+	else if (lecount(string) == 2)
 	{
-		flag = compare_all(string, 3, list, list_b);
+		flag = compare_all(string, 2, list, list_b);
 		if (flag == 1)
 		{
 			write(2, "Error\n", 6);
@@ -102,12 +127,6 @@ int	call_to_apply(int number, t_Node **list, t_Node **list_b)
 	return (0);
 }
 
-void	reset(int *incre, int *index, int *flag)
-{
-	*incre += 1;
-	index = 0;
-	flag = 0;
-}
 
 int	compare_all(char *string, int checker, t_Node **list, t_Node **list_b)
 {
@@ -120,7 +139,7 @@ int	compare_all(char *string, int checker, t_Node **list, t_Node **list_b)
 	bon.res = command_storage();
 	while (bon.increment < 11)
 	{
-		while (bon.res[bon.increment][bon.index])
+		while (string[bon.index])
 		{
 			if (bon.res[bon.increment][bon.index] == string[bon.index])
 				bon.flag++;
@@ -132,7 +151,9 @@ int	compare_all(char *string, int checker, t_Node **list, t_Node **list_b)
 			}
 			bon.index++;
 		}
-		reset(&bon.increment, &bon.index, &bon.flag);
+		bon.increment++ ;
+		bon.index = 0;
+		bon.flag = 0;
 	}
 	free(bon.res);
 	return (-1);

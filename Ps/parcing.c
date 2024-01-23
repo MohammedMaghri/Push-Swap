@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:53:52 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/22 15:11:47 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/23 23:35:25 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,5 +64,4 @@ void	ss_swap_bonus(t_Node *list_a, t_Node *list_b)
 		return ;
 	sa_swap(list_a);
 	sb_swap(list_b);
-	putstr("ss\n");
 }

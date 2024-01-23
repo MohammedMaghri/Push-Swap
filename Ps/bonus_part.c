@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 16:57:56 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/23 20:40:16 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/23 23:51:38 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ char	*for_saftey(char *string)
 void	free_out(char *string)
 {
 	free(string);
+	write(1 , "Error\n", 1);
 	exit(1);
 }
 
@@ -71,6 +72,12 @@ void	for_ko(void)
 	exit(1);
 }
 
+void	for_er(void)
+{
+	write(2, "Error\n", 2);
+	exit(1);
+}
+
 void	read_till_null(int fd, int argc, t_Node **list, t_Node **list_b)
 {
 	t_null	nl;
@@ -87,17 +94,14 @@ void	read_till_null(int fd, int argc, t_Node **list, t_Node **list_b)
 			break ;
 		if_null(nl.string, list, list_b);
 		check_condition(nl.string, nl.flag);
-		// nl.rais = all_of(nl.string);
-		// if (nl.rais == 0)
-		// {
-		// 	write(2, "Error\n", 6);
-		// 	exit(1);
-		// }
-		test_the_command(nl.string, list, list_b);
+		nl.rais = all_of(add_till(nl.string));
+		if (nl.rais == 0)
+			for_er();
+		test_the_command(add_till(nl.string), list, list_b);
 	}
 	free(nl.string);
 	if (count_list(*list_b) >= 1)
-		for_ko();
+		exit(1);
 	last_check(list, list_b);
 }
 
@@ -111,17 +115,17 @@ char	**command_storage(void)
 		free_all(allocation);
 		exit(1);
 	}
-	allocation[0] = "sa\n";
-	allocation[1] = "sb\n";
-	allocation[2] = "ss\n";
-	allocation[3] = "pa\n";
-	allocation[4] = "pb\n";
-	allocation[5] = "ra\n";
-	allocation[6] = "rb\n";
-	allocation[7] = "rr\n";
-	allocation[8] = "rra\n";
-	allocation[9] = "rrb\n";
-	allocation[10] = "rrr\n";
+	allocation[0] = "sa";
+	allocation[1] = "sb";
+	allocation[2] = "ss";
+	allocation[3] = "pa";
+	allocation[4] = "pb";
+	allocation[5] = "ra";
+	allocation[6] = "rb";
+	allocation[7] = "rr";
+	allocation[8] = "rra";
+	allocation[9] = "rrb";
+	allocation[10] = "rrr";
 	allocation[11] = NULL;
 	return (allocation);
 }
