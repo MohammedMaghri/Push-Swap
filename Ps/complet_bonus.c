@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 18:32:58 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/24 11:33:59 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/24 12:47:39 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ int	call_to_apply(int number, t_Node **list, t_Node **list_b)
 	if (number == 0)
 		return (sa_swap_bonus((*list)), -1);
 	else if (number == 1)
-		return (sb_swap_bonus((*list)), -1);
+		return (sb_swap_bonus((*list_b)), -1);
 	else if (number == 2)
 		return (ss_swap_bonus((*list), *list_b), -1);
 	else if (number == 3)
@@ -103,13 +103,13 @@ int	call_to_apply(int number, t_Node **list, t_Node **list_b)
 	else if (number == 5)
 		return (ra_rotate_bonus((list)), -1);
 	else if (number == 6)
-		return (rb_rotate_bonus((list)), -1);
+		return (rb_rotate_bonus((list_b)), -1);
 	else if (number == 7)
 		return (rr_rotate_bonus((list), list_b), -1);
 	else if (number == 8)
 		return (rra_rotate_bonus((list)), -1);
 	else if (number == 9)
-		return (rrb_rotate_bonus((list)), -1);
+		return (rrb_rotate_bonus((list_b)), -1);
 	else if (number == 10)
 		return (rrr_rotate_bonus((list), (list_b)), -1);
 	return (0);

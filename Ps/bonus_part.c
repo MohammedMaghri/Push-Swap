@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 16:57:56 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/24 11:25:25 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/24 12:58:27 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ char	*for_saftey(char *string)
 void	free_out(char *string)
 {
 	free(string);
-	write(1, "Error\n", 1);
+	write(1, "Error\n", 6);
 	exit(1);
 }
 

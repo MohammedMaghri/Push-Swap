@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:37:22 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/23 13:05:40 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/24 12:15:54 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,13 +101,13 @@ int	check_all_heights(t_Node **list)
 
 void	sort_five(t_Node **list, t_Node **list_b)
 {
+	if (check_sort(list) == 0)
+		exit(0);
 	if (count_list(*list) <= 3)
 	{
 		check_tree(list);
 		exit(0);
 	}
-	if (check_sort(list) == 0)
-		exit(0);
 	while (check_less(list) != 0)
 		ra_rotate(list);
 	pb_push(list, list_b);

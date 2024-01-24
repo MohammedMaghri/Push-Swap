@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 18:59:51 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/24 11:21:59 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/24 12:51:26 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,17 @@
 
 void	if_null(char *string, t_Node **list, t_Node **list_b)
 {
-	(void)list_b ;
 	if (string[0] == '\0')
 	{
 		if (check_sort(list) == -1)
 		{
+			count_if(list_b);
 			write(2, "KO\n", 3);
 			exit(1);
 		}
 		else
 		{
+			count_if(list_b);
 			write(2, "OK\n", 3);
 			exit(0);
 		}
@@ -58,7 +59,7 @@ void	last_check(t_Node **list, t_Node **list_b)
 	}
 	else
 	{
-		putstr("OK\n");
+		write(1, "OK\n", 3);
 		exit(0);
 	}
 }

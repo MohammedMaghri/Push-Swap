@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 12:25:11 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/21 19:00:06 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/24 12:49:21 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	ra_rotate_bonus(t_Node **list_a)
 	t_Node	*track ;
 	t_Node	*follow;
 
-	if (count_list(*list_a) == 1)
+	if (count_list(*list_a) <= 1)
 		return ;
 	flag = (*list_a);
 	track = (*list_a)->next;
@@ -66,7 +66,7 @@ void	rb_rotate_bonus(t_Node **list_b)
 	t_Node	*track ;
 	t_Node	*follow;
 
-	if (count_list(*list_b) == 1)
+	if (count_list(*list_b) <= 1)
 		return ;
 	flag = (*list_b);
 	track = (*list_b)->next;

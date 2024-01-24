@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 11:24:33 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/24 11:33:48 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/24 12:51:35 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 void	for_ko(void)
 {
-	write(2, "KO\n", 2);
+	write(2, "KO\n", 3);
 	exit(1);
 }
 
 void	for_er(void)
 {
-	write(2, "Error\n", 2);
+	write(2, "Error\n", 6);
 	exit(1);
 }
 

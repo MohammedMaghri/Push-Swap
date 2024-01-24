@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 12:26:38 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/21 19:02:39 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/24 12:55:47 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ void	rrb_rotate_bonus(t_Node **list_b)
 	t_Node	*head;
 	t_Node	*position;
 
-	if (count_list(*list_b) == 1)
+	if (count_list(*list_b) <= 1)
 		return ;
-	if (count_list(*list_b) == 2)
+	if (count_list(*list_b) <= 2)
 	{
 		sb_swap_bonus(*list_b);
 		return ;

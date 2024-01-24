@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 22:01:41 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/23 14:34:49 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/24 12:16:13 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ int	check_if_up(t_Node **list, int index)
 
 void	index_all(t_Node **list, t_Node **list_b, t_lspies *lsp)
 {
+	if (check_sort(list) == 0)
+		exit(0);
 	lsp->lastpivot = -1;
 	lsp->pvtone = (count_list(*list) / 3);
 	lsp->pvttwo = (count_list(*list) / 6);
