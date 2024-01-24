@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 16:57:56 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/23 23:51:38 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/24 11:25:25 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ char	*for_saftey(char *string)
 void	free_out(char *string)
 {
 	free(string);
-	write(1 , "Error\n", 1);
+	write(1, "Error\n", 1);
 	exit(1);
 }
 
@@ -66,18 +66,6 @@ char	*merge(char *string, char *wedohave)
 	return (allocation);
 }
 
-void	for_ko(void)
-{
-	write(2, "KO\n", 2);
-	exit(1);
-}
-
-void	for_er(void)
-{
-	write(2, "Error\n", 2);
-	exit(1);
-}
-
 void	read_till_null(int fd, int argc, t_Node **list, t_Node **list_b)
 {
 	t_null	nl;
@@ -99,9 +87,8 @@ void	read_till_null(int fd, int argc, t_Node **list, t_Node **list_b)
 			for_er();
 		test_the_command(add_till(nl.string), list, list_b);
 	}
+	count_if(list_b);
 	free(nl.string);
-	if (count_list(*list_b) >= 1)
-		exit(1);
 	last_check(list, list_b);
 }
 

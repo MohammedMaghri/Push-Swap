@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 21:34:58 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/22 21:39:35 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/24 11:49:44 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,6 @@ int *bottom, int *bigger)
 		}
 		else
 			rrb_rotate(list_b);
-	}
-	while (*list_b && (*list)->index == (*list_b)->index + 1)
-		pa_push(list, list_b);
-	while (find_bottom_index(list) == (*list)->index - 1)
-	{
-		rra_rotate(list);
-		*bottom = find_bottom_index(list);
 	}
 }
 

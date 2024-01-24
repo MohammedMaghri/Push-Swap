@@ -1,36 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bonus_main.c                                       :+:      :+:    :+:   */
+/*   small_function.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/23 17:35:54 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/24 11:12:56 by mmaghri          ###   ########.fr       */
+/*   Created: 2024/01/24 11:24:33 by mmaghri           #+#    #+#             */
+/*   Updated: 2024/01/24 11:33:48 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-int	main(int argc, char **argv)
+void	for_ko(void)
 {
-	int			*num;
-	t_addr		add;
-	t_Node		*list;
-	t_Node		*list_b;
+	write(2, "KO\n", 2);
+	exit(1);
+}
 
-	if (argc <= 1)
-		exit(0);
-	list = malloc(sizeof(struct Node));
-	if (!list)
+void	for_er(void)
+{
+	write(2, "Error\n", 2);
+	exit(1);
+}
+
+void	count_if(t_Node **list_b)
+{
+	if (count_list(*list_b) >= 1)
+	{
+		write(2, "KO\n", 3);
 		exit(1);
-	list_b = NULL ;
-	check_args(argv);
-	num = convert_to_number(read_to_list(keep_one(merge_in_one(argv, argc))) \
-, &add);
-	check_double(num, &add);
-	function_made(num, list, &add);
-	at_linked(&list);
-	read_till_null(1, argc, &list, &list_b);
-	exit(0);
+	}
+}
+
+void	up_there(char *string, char *res, int *increment, int *flag)
+{
+	if (string[*increment] == res[*increment])
+		*flag += 1;
+}
+
+void	initilaize(int *increment, int *index, int *flag)
+{
+	*increment += 1;
+	*index = 0;
+	*flag = 0;
 }

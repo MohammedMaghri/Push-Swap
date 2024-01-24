@@ -6,7 +6,7 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:54:30 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/23 22:13:32 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/24 11:31:04 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,11 @@ typedef struct till_null
 	int		res;
 }	t_null;
 
+void	initilaize(int *increment, int *index, int *flag);
+void	up_there(char *string, char *res, int *increment, int *flag);
+void	for_ko(void);
+void	for_er(void);
+void	count_if(t_Node **list_b);
 char	*add_till(char *string);
 int		all_of(char *string);
 int		check_all(char *string);

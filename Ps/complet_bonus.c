@@ -6,18 +6,11 @@
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 18:32:58 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/01/23 23:50:42 by mmaghri          ###   ########.fr       */
+/*   Updated: 2024/01/24 11:33:59 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
-#include <stdio.h>
-
-void	up_there(char *string, char *res, int *increment, int *flag)
-{
-	if (string[*increment] == res[*increment])
-		*flag += 1;
-}
 
 char	*add_till(char *string)
 {
@@ -41,31 +34,26 @@ char	*add_till(char *string)
 
 int	all_of(char *string)
 {
-	int		index ;
-	int		increment;
-	int		flag;
-	char	**res ;
+	t_bone	zz;
 
-	increment = 0;
-	index = 0;
-	flag = 0;
-	res = command_storage();
-	while (index < 11)
+	zz.increment = 0;
+	zz.index = 0;
+	zz.flag = 0;
+	zz.res = command_storage();
+	while (zz.index < 11)
 	{
-		while (string[increment])
+		while (string[zz.increment])
 		{
-			if (string[increment] == res[index][increment])
-				flag++ ;
-			if (flag == lecount(string))
+			if (string[zz.increment] == zz.res[zz.index][zz.increment])
+				zz.flag++ ;
+			if (zz.flag == lecount(string))
 			{
 				free(string);
 				return (1);
 			}
-			increment++;
+			zz.increment++;
 		}
-		flag = 0;
-		increment = 0;
-		index++ ;
+		initilaize(&zz.index, &zz.increment, &zz.flag);
 	}
 	free(string);
 	return (0);
@@ -127,7 +115,6 @@ int	call_to_apply(int number, t_Node **list, t_Node **list_b)
 	return (0);
 }
 
-
 int	compare_all(char *string, int checker, t_Node **list, t_Node **list_b)
 {
 	t_bone	bon;
@@ -151,9 +138,7 @@ int	compare_all(char *string, int checker, t_Node **list, t_Node **list_b)
 			}
 			bon.index++;
 		}
-		bon.increment++ ;
-		bon.index = 0;
-		bon.flag = 0;
+		initilaize(&bon.increment, &bon.index, &bon.flag);
 	}
 	free(bon.res);
 	return (-1);
